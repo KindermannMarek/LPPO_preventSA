@@ -1,11 +1,38 @@
 ---
-title: "LPPO_preventSA"
+title: "Novel polycaprolactone and polyvinyl alcohol electrospun nanofiber material loaded with antibacterial LEGO-LPPO"
+subtitle: "Figure 10 - Data analysis report"
+author: "Nitjawan Sahatsapan, Jana Sabova, Ivana Kóšiová, Věra Jenčová, Eva Kuželová Košťáková, Kateřina Bogdanová, Kateřina Pražáková, Viktor Mojr, Maxim Lisnenko, Kristýna Havlíčková, Jana Müllerová, David Sýkora, Marek Kindermann, Elizabeth Tsibouki, Katerina Chudejova, Vendula Peckova, Pavel Klein, Renata Večeřová, Peter Gál, Milan Kolář, David Lukáš, Dominik Rejman"
+format:
+  html:
+    embed-resources: true
+    toc: true
+    toc-expand: 2
+    toc-depth: 4
+    toc-location: left
+    number-sections: true
+    number-depth: 4
+    code-fold: show
+    code-tools: true
+    code-summary: "Open code"
+    grid:
+      body-width: 1000px
+      sidebar-width: 600px
+      margin-width: 100px
+    highlight-style: github  # ✅ required for code coloring
+    theme: darkly                   # ✅ valid theme (Quarto auto-appplies)
+    css: styles.css 
+    references: true  
+project:
+  type: website
+  output-dir: output
 ---
 
-This is a Quarto website.
+------------------------------------------------------------------------
 
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
 
-```{r}
-1 + 1
-```
+# Analysis Supplement (Pre-publication)
+
+This repository serves as the official supplemental data and analysis report for the manuscript: *Novel polycaprolactone and polyvinyl alcohol electrospun nanofiber material loaded with antibacterial LEGO-LPPO"*. To maintain the integrity of the peer-review process, the full reproducible R code, raw data, and detailed modeling justifications will be made publicly available here immediately upon the manuscript's acceptance for publication.
+
+
+
