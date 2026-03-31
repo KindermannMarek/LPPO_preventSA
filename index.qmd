@@ -1,7 +1,6 @@
 ---
 title: "Novel polycaprolactone and polyvinyl alcohol electrospun nanofiber material loaded with antibacterial LEGO-LPPO"
 subtitle: "Figure 10 - Data analysis report"
-author: "Nitjawan Sahatsapan, Jana Sabova, Ivana Kóšiová, Věra Jenčová, Eva Kuželová Košťáková, Kateřina Bogdanová, Kateřina Pražáková, Viktor Mojr, Maxim Lisnenko, Kristýna Havlíčková, Jana Müllerová, David Sýkora, Marek Kindermann, Elizabeth Tsibouki, Katerina Chudejova, Vendula Peckova, Pavel Klein, Renata Večeřová, Peter Gál, Milan Kolář, David Lukáš, Dominik Rejman"
 format:
   html:
     embed-resources: true
@@ -30,7 +29,7 @@ project:
 ------------------------------------------------------------------------
 
 
-# Analysis Supplement (Pre-publication)
+**Analysis Supplement (Pre-publication)**
 
 This repository serves as the official supplemental data and analysis report for the manuscript: *Novel polycaprolactone and polyvinyl alcohol electrospun nanofiber material loaded with antibacterial LEGO-LPPO"*. To maintain the integrity of the peer-review process, the full reproducible R code, raw data, and detailed modeling justifications will be made publicly available here immediately upon the manuscript's acceptance for publication.
 
