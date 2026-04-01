@@ -1,0 +1,58 @@
+cff-version: 1.1.0
+message: "Please cite it as below."
+authors:
+  - family-names: Sahatsapan
+    given-names: Nitjawan
+  - family-names: Sabova
+    given-names: Jana
+  - family-names: Kosiova
+    given-names: Ivana
+  - family-names: Lisnenko
+    given-names: Maxim
+  - family-names: Kuzelova Kostakova
+    given-names: Eva
+  - family-names: Bogdanova
+    given-names: Katerina
+  - family-names: Prazakova
+    given-names: Katerina
+  - family-names: Davidova
+    given-names: Eva
+  - family-names: Mojr
+    given-names: Viktor
+  - family-names: Havlickova
+    given-names: Kristyna
+  - family-names: Hauzerova
+    given-names: Sarka
+  - family-names: Mullerova
+    given-names: Jana 
+  - family-names: Sykora 
+    given-names: David
+  - family-names: Kindermann
+    given-names: Marek
+  - family-names: Tsibouki
+    given-names: Elizabeth 
+  - family-names: Chudejova
+    given-names: Katerina
+  - family-names: Peckova
+    given-names: Vendula 
+  - family-names: Klein 
+    given-names: Pavel
+  - family-names: Vecerova
+    given-names: Renata 
+  - family-names: Kolar
+    given-names: Milan
+  - family-names: Lukas
+    given-names: David
+  - family-names: Jencova
+    given-names: Vera 
+  - family-names: Gal
+    given-names: Peter
+  - family-names: Rejman
+    given-names: Dominik 
+title: "LPPO_preventSA: statistical report"
+version: 1.1.0
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.19368428
+date-released: 2026-04-01
+url: "https://zenodo.org/records/19368428"
