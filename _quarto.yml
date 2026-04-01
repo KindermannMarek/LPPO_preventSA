@@ -6,9 +6,9 @@ website:
   navbar:
     background: dark
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - href: https://aa012.webnode.page/  # link for our webpages
+        text: About us
+#      - about.qmd
 
 format:
   html:
