@@ -1,6 +1,7 @@
 ---
-title: "Novel polycaprolactone and polyvinyl alcohol electrospun nanofiber material loaded with antibacterial LEGO-LPPO"
-subtitle: "Figure 10 - Data analysis report"
+title: "Polycaprolactone and poly(vinyl alcohol) electrospun single-layer nanofiber materials loaded with novel antibacterial LEGO-LPPO for advanced wound dressing"
+subtitle: "Figure 9 - Statistical report"
+author: "Nitjawan Sahatsapan, Jana Sabová, Ivana Kóšiová, Maxim Lisnenko, Eva Kuželová Košťáková, Kateřina Bogdanová, Kateřina Pražáková, Eva Dávidová, Viktor Mojr, Kristýna Havlíčková, Šárka Hauzerová, Jana Müllerová, David Sýkora, Marek Kindermann, Elizabeth Tsibouki, Katerina Chudejova, Vendula Peckova, Pavel Klein, Tomáš Urban, Renata Večeřová, Milan Kolář, David Lukáš, Věra Jenčová, Peter Gál, Dominik Rejman"
 format:
   html:
     embed-resources: true
@@ -21,6 +22,18 @@ format:
     theme: darkly                   # ✅ valid theme (Quarto auto-appplies)
     css: styles.css 
     references: true  
+    bibliography: references.bib
+    crossref:
+      fig-title: "Figure"
+      tbl-title: "Table" 
+      eq-title: "Equation"
+      lst-title: "Listing"
+      thm-title: "Theorem"
+      lem-title: "Lemma"
+      cor-title: "Corollary"
+      prp-title: "Proposition"
+      def-title: "Definition"
+      exm-title: "Example"
 project:
   type: website
   output-dir: output
@@ -28,10 +41,2908 @@ project:
 
 ------------------------------------------------------------------------
 
+**Authors' affiliations**:
 
-**Analysis Supplement (Pre-publication)**
+[Nitjawan Sahatsapan^1,±^, Jana Sabová^2,±^, Ivana Kóšiová^1,±^, Maxim Lisnenko^3,±^, Eva Kuželová Košťáková^3,±^, Kateřina Bogdanová^4,±^, Kateřina Pražáková^5^, Eva Dávidová^1^, Viktor Mojr^1^, Kristýna Havlíčková^3^, Šárka Hauzerová^3^, Jana Müllerová^3^, David Sýkora^5^, Marek Kindermann^6^, Elizabeth Tsibouki^7^, Katerina Chudejova^6,8^, Vendula Peckova^6^, Pavel Klein^6,9^, Tomáš Urban^10^, Renata Večeřová^4^, Milan Kolář^4^, David Lukáš^3^, Věra Jenčová^3^, Peter Gál^2,10,11^, Dominik Rejman^1,12^]{style="font-size: larger;"}
 
-This repository serves as the official supplemental data and analysis report for the manuscript: *Novel polycaprolactone and polyvinyl alcohol electrospun nanofiber material loaded with antibacterial LEGO-LPPO"*. To maintain the integrity of the peer-review process, the full reproducible R code, raw data, and detailed modeling justifications will be made publicly available here immediately upon the manuscript's acceptance for publication.
+^1^Institute of Organic Chemistry and Biochemistry, Czech Academy of Sciences, Flemingovo nám. 2, 166 10 Prague 6, Czech Republic.\
+^2^Department of Pharmacology, Faculty of Medicine, Pavol Jozef Šafárik University, Košice, Slovak Republic.\
+^3^Department of Chemistry, Faculty of Science, Humanities and Education, Technical University of Liberec, Studentská 1402/2, 461 17 Liberec 1, Czech Republic.\
+^4^Department of Microbiology, Faculty of Medicine and Dentistry, Palacký University Olomouc, Hněvotínská 3, 775 15 Olomouc, Czech Republic.\
+^5^University of Chemistry and Technology Prague, Department of Analytical Chemistry, Technická 5, 166 28 Prague 6, Czech Republic.\
+^6^Biomedical Center, Faculty of Medicine in Pilsen, Charles University, Czech Republic.\
+^7^Faculty of Medicine in Pilsen, Charles University, Czech Republic.\
+^8^Department of Microbiology, Faculty of Medicine in Pilsen, Charles University, Czech Republic.\
+^9^Department of Pathological Physiology, Faculty of Medicine in Pilsen, Charles University, Czech Republic.\
+^10^Prague Burn Center, Third Faculty of Medicine, Charles University, Prague, Czech Republic.\
+^11^Department of Biomedical Research, East-Slovak Institute of Cardiovascular Diseases, Ondavská 8, 040 11 Košice, Slovak Republic.\
+^12^University of Chemistry and Technology Prague, Department of Chemistry of Natural Compounds, Technická 5, 166 28 Prague 6, Czech Republic.
+
+------------------------------------------------------------------------
+
+**Report author**:\
+[Marek Kindermann, PhD](https://orcid.org/0009-0002-2074-7833)
+
+**Review & Proofing**:\
+[Filip Tichanek, PhD](https://orcid.org/0000-0003-4139-1979)
+
+------------------------------------------------------------------------
+
+**Original publication**
+
+This is data analysis report for the [publication](https://www.sciencedirect.com/science/article/pii/S2772950826003377) *Polycaprolactone and poly(vinyl alcohol) electrospun single-layer nanofiber materials loaded with novel antibacterial LEGO-LPPO for advanced wound dressing*.
+
+<br>
+
+[When using this code, cite original publication:]{style="font-size: larger;"}
+
+::: {style="background-color: #2D2D31; padding: 10px; margin: 10px 0; border-left: 3px solid #ccc;"}
+Sahatsapan, Nitjawan, et al. "Polycaprolactone and poly (vinyl alcohol) electrospun single-layer nanofiber materials loaded with novel antibacterial LEGO-LPPO for advanced wound dressing." Biomaterials Advances (2026): 215039.
+:::
+
+<br>
+
+
+Original GitHub repository: <https://kindermannmarek.github.io/LPPO_preventSA/>  
+Archived version (Zenodo DOI): <https://doi.org/10.5281/zenodo.19368428> 
+
+------------------------------------------------------------------------
+
+```{r}
+#| label: setup-instructions
+#| include: FALSE
+#| echo: TRUE
+#| eval: FALSE
+
+if (FALSE) {  
+  # RUN THESE IN R CONSOLE TO BUILD UP THE PROJECT-LIBRARY
+  # THE PACKAGE VERSIONS MUST MATCH WITH THESE WE RAN THE ORIGINAL ANALALYSIS
+#-------------------------------------------------------------------------------
+renv::init()  # Scans and finds library() we need in this project
+renv::status()  # Should show all packages captured
+#renv::install("missing_package")
+renv::snapshot()  # Creates/updates renv.lock file with exact package versions
+#-------------------------------------------------------------------------------
+}  
+```
+
+```{r}
+#| label: libraries_load
+#| warning: false
+#| message: false
+#| include: false
+#| echo: true
+#| eval: true
+#| cache: false
+
+library(tidyverse)       # Collection of core R packages for data science (includes dplyr and tidyr)
+library(readxl)          # Reading data directly from Excel files (.xlsx)
+library(ggplot2)         # Data visualization/plotting
+library(ggsci)           # Scientific journal color palettes for ggplot2
+library(bayesplot)       # Visualizations for MCMC and Bayesian model checking
+library(tidybayes)       # Tools for manipulating and summarizing Bayesian posterior samples
+library(loo)             # Leave-One-Out cross-validation and model comparison 
+library(knitr)           # Dynamic document generation (e.g., R Markdown tables)
+library(patchwork)       # Combining multiple ggplot2 plots into a single layout
+library(brms)            # Bayesian multilevel modeling using Stan
+library(ggdag)           # For DAG
+library(dagitty)         # For DAG
+library(marginaleffects) # Extract and plot brms results
+library(patchwork)       # Compose the final plot grid
+library(egg)             # Compose the final plot grid
+```
+
+# Introduction
+
+The goal of this analysis, as visualized in Figure 9 ([original publication](https://www.sciencedirect.com/science/article/pii/S2772950826003377)), is to understand how different treatments affect the healing process of infected wounds, as measured by a visual score ranging from 0 (best) to 3 (worst). We also want to see how the final amount of bacteria in the wound (final bacterial load) associates with this visual score.
+
+Statistical analyses were performed using R, version 4.5.1 [@rcoreteam2021] within the Quarto publishing framework [@allaire2025]. Bayesian multilevel modeling was implemented via the brms package, version 2.23.0 [@bürkner2017b], which interfaces with Stan for Hamiltonian Monte Carlo sampling [@standevelopmentteam2025]. Model results were visualized and processed using the tidyverse, v2.0.0 [@wickham2019] suite of packages. The reporting format (YAML header) and computational workflow were adapted from the validated pipeline previously established by [@zahradka2024] in this [statistical report](https://filip-tichanek.github.io/CovidTimeRTX/).
+
+<br>
+
+## Notation and formatting conventions
+
+To ensure clarity, we employ the following formatting conventions to distinguish between mathematical variables, model-specific parameters and R objects:
+
+-   $mathematical \ notation$: Formal mathematical variables and theoretical parameters are written in LaTeX italics. For example, $\beta_{logCFU}$ represents a specific population-level effect in a theoretical context.
+
+-   $\color{pink}{\text{brms model coefficients}}$: Coefficients and parameters generated directly by the brms model are highlighted in pink using LaTeX formatting. This distinguishes the estimated output from the theoretical variable. For example, $\color{pink}{\text{Intercept[1]}}$ or $\color{pink}{\text{treatA[2]}}$ refers specifically to the values residing within the posterior distribution.
+
+-   `R objects and variables`: Specific programming entities, such as data frame columns (`test_ID`) and saved model objects (`fit1.1.0`).
+
+<br>
+
+
+## Data description
+
+### Experimental design
+
+In one experiment (see `test_ID` variable), there were typically mice from two to three `cage`s, each mouse with specific `ID`. These mice received the same `batch` of bacterial inoculum within the given experiment. The same `batch` of inoculum was applied on both `sites` (left wound; right wound). An experimental treatment (B, H, G) or positive control (Ag) was applied to the left excision wound (immediately after application of the inoculum to the wound); a negative control (A, E, Cosmopor) was applied to the right wound (immediately after application of the inoculum to the wound). After undressing (after one week), the wounds were visually assessed (`score`) and a sample was taken using a microbiological loop to obtain `CFU_mL` (microbiological assessment).
+
+<br>
+
+### Visual score
+
+`score`: evaluation of visual observation of the wound after treatment application (one week after application); - 0: wound physiologically healing or partially healed, no visible presence of infection and/or inflammation; - 1: slight presence of purulent material - 2: purulent material is present, not exceeding the boundary of the wound bed - 3: wound bed is filled with bacterial biofilm, inflammatory skin reaction is visible in the immediate vicinity of the wound - 4 - wound dehiscent, completely filled with bacterial biofilm, which is also located outside the original wound boundaries, inflammatory skin reaction is visible even several mm from the original location of the wound bed
+
+Because the score 1 was underrepresented in the dataset, we have merged the original scores 1 and 2 into a new score 1. The modified scoring system used for the analysis (and manuscript) is as follows:
+
+`score2`: evaluation of visual observation of the wound after treatment application (one week after application); - 0: wound physiologically healing or partially healed, no visible presence of infection and inflammation; - 1: purulent material and/or inflammation is present; purulent materiel not exceeding the boundary of the wound bed - 2: wound bed is filled with bacterial biofilm, inflammatory skin reaction is visible in the immediate vicinity of the wound - 3 - wound dehiscent, completely filled with bacterial biofilm, which is also located outside the original wound boundaries, inflammatory skin reaction is visible even several mm from the original location of the wound bed
+
+<br>
+
+### Microbiological assessment
+
+`N_colonies`: number of colonies counted on the agar plate after plating the sample from the wound
+
+`TDL`: total dilution level - dilution factor used to dilute the initial sample
+
+`CFU_mL`: final bacterial load in the wound (one week after application), colony-forming unit, which estimates the number of microbial cells per 1 mL in the wound after the treatment
+
+> Calculation of `CFU_mL`:\
+> - inoculation loop (1 uL volume) is used to collect the sample from the wound\
+> - 200 uL volume used to wash the loop\
+> - TDL is dilution factor used to dilute the initial sample (201 uL)\
+> - 100 uL of dilluted sample was tested
+>
+> CFU_uL = (N_colonies \* TDL \* 201) / 100\
+> CFU_mL = (N_colonies \* TDL \* 201) / 0.1
+
+`CFU_mL2`: adjusted `CFU_mL` variable where all zero values were replaced with 1005 (limit of detection / 2) to allow logarithmic transformation
+
+> Estimation of the limit of detection (LOD):\
+> Smallest countable unit on the plate is N = 1 unit\
+> To replace CFU_mL = 0, we set N = 0.5 (no colony-forming unit were detected)\
+> For all samples having CFU_mL = 0 is true that TDL = 1
+>
+> CFU_mL\[new\] = (0.5 \* 1 \* 201) / 0.1 = 1005\
+> log10_CFU_mL\[new\] \~ 3
+
+`log_CFU_mL2`: logarithmic transformation of `CFU_mL2` (base 10)
+
+`log_CFU_mL2_s`: standardized `log_CFU_mL2` variable (mean = 0, sd = 1)
+
+<br>
+
+### Treatment
+
+`treat`: treatments were applied in pairs (1 pair per 1 mouse):
+
+> "B" - "A"\
+> "G" - "E"\
+> "H" - "E"\
+> "Ag" (positive control) - "Cosmopor" (negative control)
+
+where:
+
+> "A" -\> NANO_LPPO A\
+> "B" -\> NANO_LPPO B\
+> "E" -\> NANO_LPPO E\
+> "G" -\> NANO_LPPO G\
+> "H" -\> NANO_LPPO H\
+> "Ag" -\> PC\
+> "Cosmopor" -\> NC
+
+<br>
+
+### Grouping variables
+
+`site`: position of the excision wound in the dorsal region, left (L) and right (R)
+
+`ID`: animal ID (specific for each mouse)
+
+`cage`: the mice in the experiment are placed in cages that reflect the mice's kinships
+
+`batch`: reflects the inoculum batch; One freshly prepared inoculum was used for each experiment
+
+`test_ID`: ID for a single experiment
+
+<br>
+
+## Causal framework (DAG) {#sec-DAG}
+
+To ensure our statistical analysis aligns with the biological mechanisms of wound healing, we established a Directed Acyclic Graph (DAG). This formal causal framework explicitly maps our assumptions about the relationships between treatment, infection, and clinical outcome, providing the theoretical justification for our mediation analysis.
+
+```{r}
+#| label: DAG
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+
+dag_code <- '
+dag {
+  treat     [pos="0,0"]
+  batch     [pos="0,1"]
+  res       [pos="0,2"]
+  cfu       [pos="2,1"]
+  score     [pos="4,1"]
+  treat         -> cfu      [label="antimicrobial_killing - expected treatment effect/mechanismx"]
+  treat         -> score    [label="direct tissue effect - possible but not proved yet"]
+  batch         -> cfu      [label="inoculum potency"]
+  res           -> cfu      [label="immune_clearance"]
+  res           -> score    [label="tissue protection "]
+  cfu           -> score    [label="pathogenesis"]
+  
+  
+}'
+dag_obj <- dagitty(dag_code)
+dag_ggdag <- ggdag(dag_obj)
+
+dag_ggdag +
+  theme_dag() +
+  labs(
+    title = "Causal DAG"
+  )
+```
+
+### Mediator
+In this model, final bacterial load `log_CFU_mL2_s` (cfu) acts as the mediator between the treatment `treat` (treat) and the visual wound score `score2` (score). We hypothesize two distinct pathways for treatment efficacy:  
+
+  > The Indirect Effect (Antimicrobial Killing): The treatment reduces bacterial density, which subsequently leads to a lower clinical score by mitigating infection-driven pathogenesis.  
+
+  > The Direct Effect (Tissue Effects): The treatment may improve the wound score through mechanisms independent of bacterial load, such as moisture control or localized anti-inflammatory properties of the nanofibre dressing.  
+  
+<br>
+
+### Confounders
+The DAG identifies potential sources of variance that influence the healing process but were not directly measured as variables:  
+
+  > Inoculum Batch (batch): Acknowledges that the initial bacterial challenge's potency can influence the final `log_CFU_mL2_s` (cfu).
+
+  > Host Resilience (res): A theoretical latent factor representing an animal’s immunocompetence and innate healing capacity. Resilience is a common cause for both lower bacterial load (via immune clearance) and lower clinical scores (via faster re-epithelialization).
+
+<br>
+
+## Implementation of  causal framework
+To quantify the causal pathways identified in our DAG, we implemented a *Joint Bayesian Hierarchical Model* using the brms package. Rather than running two separate regressions-—which can ignore the shared uncertainty between variables-—a joint framework allows for the simultaneous estimation of the mediator and the outcome.
+
+<br>
+
+### Structure of the sub-models
+The joint model (see @sec-fit_joint) is composed of two components linked by the treatment effect:
+
+  > The Outcome Model (Y): We used an Adjacent-Category (ACAT) Probit model to predict the wound score (`fit1.7.0` - see @sec-fit1.7.0). This specifically accounts for the ordinal nature of clinical scoring (0–3) while allowing the treatment to have a "category-specific" effect (`cs(treat)`), reflecting that the biological effort required for a "*healthy wound*" $\to$ "*inflamed wound*" transition is fundamentally different from the mechanism of an "*inflamed wound*" $\to$ "*biofilm established*" transition.
+
+  > The Mediator Model (M): We used a Gaussian model to predict the bacterial load `log_CFU_mL2_s` (`fit2.1.0`, see @sec-fit2.1.0). This captures how the treatment directly impacts the microbial population.
+  
+<br>
+
+### Hierarchical design and priors
+Both sub-models incorporate a nested random-effects structure `(1 | batch / cage / ID)`. This mathematically accounts for the "Host Resilience" and "Inoculum Potency" factors identified in our DAG, ensuring that individual animal variability and batch-to-batch noise do not bias our population-level expectations (`re_formula = NA`).
+
+We applied weakly informative priors (Normal(0,1)) to the coefficients. This provides a "regularizing" effect that prevents the model from overfitting to noise while remaining open to the evidence provided by our experimental data.
+
+<br>
+
+### Advantage of "joint model"
+By fitting these models simultaneously, we can extract the proportional mediation directly from the joint posterior distribution. This allows us to decompose the total treatment effect (direct + indirect) and calculate the proportion of indirect effect (antimicrobial effect).
+
+<br>
+
+## Outcome model (Y)
+The true biological severity of a wound is a complex, continuous process involving inflammation, tissue damage, and bacterial burden that we cannot measure directly - we call this continuous process "*latent wound severity*". Instead, we use the visual score (0, 1, 2, or 3) as discrete labels to track the wound's status. Thus, the scores are specific points along the underlying *latent wound severity* scale.
+
+To better understand how treatments and bacterial load affect wound healing, we use an Adjacent-Category (ACAT) model that connects these factors to the visual scores through the concept of *latent wound severity*.
+
+<br>
+
+### The basic idea of the ACAT
+Instead of treating the *latent wound severity* as one single underlying variable, we break it down into three separate, adjacent transitions (0 $\to$ 1, 1 $\to$ 2, 2 $\to$ 3). Each transition has its own threshold ($\tau$ - red line) that determines when the wound moves from one score to the adjacent one - see example below.
+
+```{r}
+#| label: ACAT_principle
+#| warning: false
+#| message: false
+#| include: false
+#| echo: true
+#| eval: true
+#| cache: false
+
+mypal <- ggsci::pal_npg("nrc", alpha = 1)(10)
+
+# Define thresholds for the three transitions
+tau_01 <- -0.8
+tau_12 <- 0
+tau_23 <- 0.4
+
+# Generate density data for standard normal distribution
+x_values <- seq(-4, 4, length.out = 500)
+density <- dnorm(x_values, mean = 0, sd = 1)
+
+# Create a data frame for plotting
+plot_example1 <-
+  data.frame(x = x_values, 
+             density = density) 
+
+plot_example01 <-
+  plot_example1 |>
+      mutate(shade = case_when(
+        x < tau_01 ~ "score 0",
+        x >= tau_01 ~ "score 1",
+        TRUE ~ NA_character_)) 
+
+plot_example12 <-
+  plot_example1 |>
+      mutate(shade = case_when(
+        x < tau_12 ~ "score 1",
+        x >= tau_12 ~ "score 2",
+        TRUE ~ NA_character_)) 
+
+plot_example23 <-
+  plot_example1 |>
+      mutate(shade = case_when(
+        x < tau_23 ~ "score 2",
+        x >= tau_23 ~ "score 3",
+        TRUE ~ NA_character_)) 
+
+l <- length(plot_example1$x)
+
+plot_example1 <-
+  do.call("rbind", list(plot_example01, plot_example12, plot_example23)) 
+
+label <- c(rep("0->1", l), rep("1->2", l), rep("2->3", l))
+label2 <- c(rep("No treatment (baseline)", 3*l))
+
+plot_example1 <- 
+  plot_example1 |>
+  mutate(transition = label,
+         scenario = label2)
+
+# Plotting
+p1 <- 
+  plot_example1 |>
+  filter(transition == "0->1") |>
+  ggplot(aes(x = x, y = density)) +
+  geom_area(aes(fill = shade),
+            alpha = 0.8) +
+    scale_fill_manual(name = "",
+                      values = c("score 0" = mypal[3], "score 1" = mypal[7])) +
+  geom_line(color = "darkslategray", linewidth = 1.2) +
+  geom_vline(xintercept = tau_01, color = "red", linewidth = 1.5) +
+  theme_classic() + 
+  labs(title = "",
+       x = "Latent wound severity \n for transition 0->1",
+       y = ""
+  ) +
+  theme(axis.text=element_blank(),
+        axis.ticks=element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+         aspect.ratio = 1,
+         legend.position = "top") +
+  facet_wrap(~ scenario)
+
+p2 <- 
+  plot_example1 |>
+  filter(transition == "1->2") |>
+  ggplot(aes(x = x, y = density)) +
+  geom_area(aes(fill = shade),
+            alpha = 0.8) +
+    scale_fill_manual(name = "",
+                      values = c("score 1" = mypal[7], "score 2" = mypal[5])) +
+  geom_line(color = "darkslategray", linewidth = 1.2) +
+  geom_vline(xintercept = tau_12, color = "red", linewidth = 1.5) +
+  theme_classic() + 
+  labs(title = "",
+       x = "Latent wound severity \n for transition 1->2",
+       y = ""
+  ) +
+  theme(axis.text=element_blank(),
+        axis.ticks=element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        aspect.ratio = 1,
+        legend.position = "top") +
+  facet_wrap(~ scenario)
+
+p3 <- 
+  plot_example1 |>
+  filter(transition == "2->3") |>
+  ggplot(aes(x = x, y = density)) +
+  geom_area(aes(fill = shade),
+            alpha = 0.8) +
+    scale_fill_manual(name = "",
+                      values = c("score 2" = mypal[5], "score 3" = mypal[8])) +
+  geom_line(color = "darkslategray", linewidth = 1.2) +
+  geom_vline(xintercept = tau_23, color = "red", linewidth = 1.5) +
+  theme_classic(base_size = 12) + 
+  labs(title = "",
+       x = "Latent wound severity \n for transition 2->3",
+       y = ""
+  ) +
+  theme(axis.text=element_blank(),
+        axis.ticks=element_blank(),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        aspect.ratio = 1,
+        legend.position = "top") + 
+    facet_wrap(~ scenario)
+```
+
+```{r, echo=-1}
+p1 | p2 | p3
+```
+
+The positions of the thresholds ($\tau$ - red lines) are determined by pathophysiology of wound healing (areas under curves reflect the probability of observing given score). The ACAT allows to reflect the situation when the the biological mechanisms and energy barriers required to transition between adjacent wound states are not equivalent. For instance, try to compare these:
+
+-   transition $0 \to 1$ can be considered as transition *healthy wound* $\to$ *wound with inflammation*
+-   transition $1 \to 2$ can be considered as transition *wound with inflammation* $\to$ *wound with established biofilm*
+
+In general, these transitions may not be equivalent, and thus, the positions of the thresholds ($\tau$) can differ (as shown above).
+
+This concept can be extended to include e.g. the effects of treatments on the *latent wound severity*. In this framework, treatments shift the entire *latent wound severity* distribution left or right, thereby changing the probabilities of observing each score.
+
+Following example illustrates the effect of the treatment on a single transition (1 $\to$ 2) by shifting the *latent wound severity* distribution left (better outcomes) relative to a fixed threshold ($\tau$ - red line).
+
+```{r}
+#| label: ACAT_principle2
+#| warning: false
+#| message: false
+#| include: false
+#| echo: true
+#| eval: true
+#| cache: false
+
+# --- 1. Define Parameters for a Single Transition ---
+
+# The FIXED threshold (tau) for the Score 1 vs Score 2 transition
+# This boundary remains constant across all groups.
+tau_fixed <- 0 
+
+# The baseline latent mean (mu) for the untreated group
+mu_baseline <- 0
+
+# The treatment effect (beta_effect) shifts the latent mean
+beta_effect <- -0.8 
+# The treated latent mean is the baseline mean plus the effect.
+# A negative beta_effect means the severity decreases (shifts left/to better outcomes).
+mu_treated <- mu_baseline + beta_effect # 0.5 + (-0.8) = -0.3
+
+
+# --- 2. Generate Density Data (The Shifting Element) ---
+generate_density_data <- function(mu, scenario) {
+  x_values <- seq(-4, 4, length.out = 500)
+  data.frame(
+    x = x_values,
+    density = dnorm(x_values, mean = mu, sd = 1),
+    scenario = scenario,
+    latent_mean = mu
+  )
+}
+
+# Generate data for both scenarios
+data_baseline <- generate_density_data(mu_baseline, "Mean severity - No treatment (baseline)")
+data_treated <- generate_density_data(mu_treated, "Mean severity - Treated")
+
+# Combine the data
+full_plot_data <- bind_rows(data_baseline, data_treated) |>
+  mutate(
+    scenario = factor(scenario, levels = c("Mean severity - No treatment (baseline)", "Mean severity - Treated")),
+    # The shading is determined by comparing the FIXED threshold to the shifting distribution
+    shade = case_when(
+      x < tau_fixed ~ "Probability of score 1",
+      x >= tau_fixed ~ "Probability of score 2",
+      TRUE ~ NA_character_)) |>
+  mutate(scenario2 = case_when(
+    scenario == "Mean severity - No treatment (baseline)" ~ "No treatment (baseline)",
+    scenario == "Mean severity - Treated" ~ "Treated",
+    .default = scenario)) 
+
+
+full_plot_data1 <-
+  full_plot_data |>
+  filter(scenario == "Mean severity - No treatment (baseline)")
+
+full_plot_data2 <-
+  full_plot_data |>
+  filter(scenario == "Mean severity - Treated")
+
+# Prepare data for the FIXED threshold line
+threshold_data <- data.frame(
+  scenario = c("Mean severity - No treatment (baseline)", "Mean severity - Treated"),
+  threshold_position = tau_fixed,
+  label = "Fixed Threshold 1->2"
+) |>
+  mutate(scenario = factor(scenario, levels = c("Mean severity - No treatment (baseline)", "Mean severity - Treated"))) 
+
+
+# --- 4. Plotting ---
+
+p1 <- ggplot() +
+  
+  # Draw the area under the curve, shaded based on the FIXED threshold
+  geom_area(data = full_plot_data1,
+            mapping = aes(x = x, y = density, fill = shade),
+            alpha = 0.8) +
+    scale_fill_manual(name = "",
+                      values = c("Probability of score 2" = mypal[5], "Probability of score 1" = mypal[7])) +
+  
+  # Draw the outline of the shifting distribution
+  geom_line(data = full_plot_data1, 
+            mapping = aes(x = x, y = density),
+            color = "darkslategray", linewidth = 1.2) +
+  
+  # Add the vertical FIXED threshold line (Same position in both facets)
+  geom_vline(mapping = aes(xintercept = 0), 
+    linetype = "solid", 
+    color = "red", 
+    linewidth = 1.5) +
+  
+  # Add the shifting mean position as a dashed line for reference
+  geom_vline(mapping = aes(xintercept = 0, color = "darkred"), 
+    linetype = "dashed", 
+    linewidth = 1) +  
+    scale_color_manual(
+    name = "Mean wound severity",
+    values = "darkred") +
+  
+  # --- Labels and Theme ---
+  facet_wrap(~ scenario2, ncol = 2) +
+  
+  labs(
+    x = "Latent wound severity \n for transition 1->2",
+    y = ""
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    plot.title = element_text(hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, color = "gray30"),
+    legend.position = "bottom",
+    legend.box = "vertical",
+    strip.text.x = element_text(size = 14),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.ticks.y=element_blank(),
+    axis.text.y=element_blank())
+  # Remove X axis ticks
+  # scale_x_continuous(breaks = NULL) 
+
+
+p2 <- ggplot() +
+  
+  # Draw the area under the curve, shaded based on the FIXED threshold
+  geom_area(data = full_plot_data2,
+            mapping = aes(x = x, y = density, fill = shade),
+            alpha = 0.8) +
+    scale_fill_manual(name = "",
+                      values = c("Probability of score 2" = mypal[5], "Probability of score 1" = mypal[7])) +
+  
+  # Draw the outline of the shifting distribution
+  geom_line(data = full_plot_data2, 
+            mapping = aes(x = x, y = density),
+            color = "darkslategray", linewidth = 1.2) +
+  
+  # Add the vertical FIXED threshold line (Same position in both facets)
+  geom_vline(mapping = aes(xintercept = 0), 
+    linetype = "solid", 
+    color = "red", 
+    linewidth = 1.5) +
+  
+  # Add the shifting mean position as a dashed line for reference
+  geom_vline(mapping = aes(xintercept = -0.8, color = "darkred"), 
+    linetype = "dashed", 
+    linewidth = 1) +  
+    scale_color_manual(
+    name = "Mean wound severity",
+    values = "darkred") +
+  
+  # --- Labels and Theme ---
+  facet_wrap(~ scenario2, ncol = 2) +
+  
+  labs(
+    x = "Latent wound severity \n for transition 1->2",
+    y = ""
+  ) +
+  theme_classic(base_size = 12) +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5),
+    plot.subtitle = element_text(hjust = 0.5, color = "gray30"),
+    legend.position = "bottom",
+    legend.box = "vertical",
+    strip.text.x = element_text(face = "bold", size = 14),
+    panel.grid.major = element_blank(),
+    panel.grid.minor = element_blank(),
+    axis.ticks.y=element_blank(),
+    axis.text.y=element_blank()
+  ) 
+  # Remove X axis ticks
+  # scale_x_continuous(breaks = NULL) +
+```
+
+```{r, echo=-1, out.width="60%"}
+p1 + theme(legend.position = "top")  | 
+p2 + theme(legend.position = "top") 
+```
+
+*No treatment (baseline)*: The mean severity distribution is centered at $\mathbf{0}$. The untreated group has an equal chance (50/50 probability) of being scored 1 or 2.
+
+*Treated*: An effective treatment results in the entire severity distribution being shifted left. This negative shift results in higher probability of achieving the better outcome (score 1) compared to score 2 (see the areas under the curve).
+
+The ACAT concept is even more important, when we consider that the tested wound treatments can provide at least two mechanism of action:
+
+-   physical barrier which regulates the environment of the wound (e.g. moisture, oxygenation, etc.)
+-   antibacterial activity which reduces the bacterial load in the wound.
+
+These may influence different transitions differently, and therefore, monitoring individual transitions may be advantageous.
+
+<br>
+
+### Formal description of the model
+
+Before reading this section, we recommend that you first read the following publication: [@bürkner2019]
+
+We employ the Adjacent Category Model (ACM) using the probit link function $\Phi^{-1}(\cdot)$.
+
+$$
+\Pr(Y_{i}=k \mid Y_{i} \in \{k, k+1 \}, \eta_{k+1,i}) =\Phi(\tau_{k+1} - \eta_{k+1,i})
+$$ Here:
+
+-   $Y_{i}$ - ordinal wound score for observation $i$
+
+-   $\eta_{k+1,i}$ - the linear predictor for threshold $k+1$ at observation $i$
+
+-   $\tau_{k+1}$ - the threshold parameter for adjacent categories $k$ and $k+1$
+
+-   $\Phi(\cdot)$ - the standard normal cumulative distribution function
+
+-   $k$ - reflects the wound score (0, 1, 2, 3)
+
+The ordinal outcome $Y$ is derived from a latent continuous variables $\widetilde{Y}_{k+1}$, representing the true wound severity, which follow a standard normal distribution. Because we have 4 categories (0, 1, 2, 3), we get 3 transitions (0 $\to$ 1, 1 $\to$ 2, 2 $\to$ 3). Model includes these transitions in the form of thresholds/intercepts $\tau_{k+1}$ on the latent scale.
+
+The model estimates the probability of getting wound score $k$ on specific scenario:
+
+-   $Y=k$: This is the event of observing the lower wound score (e.g., $k=1$).
+
+-   $Y \in \{k, k+1\}$: This is the condition. We focus only to observations that fell into one of the two adjacent categories (e.g. $k=1$ ($k$) and $k=2$ ($k+1$)).
+
+-   The probability of $Y=k$ (given the adjacent category restriction) is also conditional on the linear predictor $η$. E.g., the linear predictor reflecting the experimental treatment $j$ (factor **TREAT**) has the following form:
+
+$$
+\eta_{k+1, i}= \sum_{j}^{}(\beta_{TREAT, j, k+1}\cdot TREAT_{i, j})
+$$ Because of the sign convention on the right site of the equation ($\tau_{k+1} - \eta_{k+1,i}$):
+
+-   $\beta_{TREAT, j, k+1} < 0$: beneficial effect, cumulative probability of lower score $k$ increases, and decreases for adjacent higher score $k+1$
+
+-   $\beta_{TREAT, j, k+1} = 0$: no treatment effect
+
+-   $\beta_{TREAT, j, k+1} > 0$: unfavorable effect, cumulative probability of lower score $k$ decreases, and increases for adjacent higher score $k+1$
+
+For treatment **X** and specific transition $k \to k+1$ then:
+
+-   $\beta_{TREAT, X, 1}$: Effect on the 0 $\to$ 1 transition
+
+-   $\beta_{TREAT, X, 2}$: Effect on the 1 $\to$ 2 transition
+
+-   $\beta_{TREAT, X, 3}$ Effect on the 2 $\to$ 3 transition
+
+<br>
+
+
+# Commented R code
+
+## Packages
+```{r}
+#| label: clear_all
+#| warning: false
+#| message: false
+#| include: false
+#| echo: true
+#| eval: true
+#| cache: false
+
+### Clear all
+rm(list=ls())
+```
+
+Libraries used in this script:
+```{r}
+#| label: libraries_show
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: false
+
+library(tidyverse)       # Collection of core R packages for data science (includes dplyr and tidyr)
+library(readxl)          # Reading data directly from Excel files (.xlsx)
+library(ggplot2)         # Data visualization/plotting
+library(ggsci)           # Scientific journal color palettes for ggplot2
+library(bayesplot)       # Visualizations for MCMC and Bayesian model checking
+library(tidybayes)       # Tools for manipulating and summarizing Bayesian posterior samples
+library(loo)             # Leave-One-Out cross-validation and model comparison 
+library(knitr)           # Dynamic document generation (e.g., R Markdown tables)
+library(patchwork)       # Combining multiple ggplot2 plots into a single layout
+library(brms)            # Bayesian multilevel modeling using Stan
+library(ggdag)           # For DAG
+library(dagitty)         # For DAG
+library(marginaleffects) # Extract and plot brms results
+library(patchwork)       # Compose the final plot grid
+library(egg)             # Compose the final plot grid
+```
+
+<br>
+
+## Fuctions
+
+To systematically check the diagnostic for our models, let's create a function for this purpose:
+```{r}
+#| label: function
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+#| 
+# Function to perform model evaluation
+evaluate_bayesian_model <- function(fitted_model) {
+  ###  Summary of a fitted model
+  print(summary(fitted_model))
+  
+  ### Distribution of outcome vs. newly simulated data distribution
+  print(pp_check(fitted_model, type = "bars_grouped", group = "treat", ndraws = 50))
+  
+  ### "Leave-one-out extreme value diagnostic"
+  print(loo(fitted_model))
+}
+```
+
+```{r}
+#| label: colors
+#| warning: false
+#| message: false
+#| include: false
+#| echo: true
+#| eval: true
+#| cache: false
+
+# Define color palette
+mypal <- ggsci::pal_npg("nrc", alpha = 1)(10)
+#scales::show_col(mypal)    # To check the color palette
+```
+
+<br>
+
+## Load data
+First, load the brms fits for smooth report rendering.  
+```{r}
+#| label: brms_fits
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.1.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.2.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.3.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.4.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.6.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.7.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_reloo1.3.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_reloo1.4.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_reloo1.6.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_reloo1.7.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.8.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_reloo1.8.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.7.1.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.7.2.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.7.3.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/fit1.9.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/fit1.10.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit1.11.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/b_fit2.1.0.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/fit_joint.RData")
+```
+
+<br>
+
+Let's load measured data, check the structure and assign the correct data type to each variable:
+```{r}
+#| label: load_measured_data
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+
+file_name <- "LPPO_CFU.xlsx"
+sheet_name <-"CFU"
+sheet_range <- "A1:N95"
+file_path <- "C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/data/21082025_SAureus_Prevent_1az5/LPPO_CFU2.xlsx"
+data1.1 <- read_excel(file_path, sheet = sheet_name, range = sheet_range)
+
+data1.1 <-
+  data1.1 |>
+  mutate(score = as.ordered(score),
+         treat = as.factor(treat),
+         cage = as.factor(cage),
+         batch = as.factor(batch),
+         ID = as.factor(ID),
+         site = as.factor(site),
+         CFU_mL = as.numeric(CFU_mL))
+  
+knitr::kable(data1.1)
+```
+
+## Data exploration
+
+Check the basic data visualization and total counts in our data set:
+```{r}
+#| label: explor1
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+
+# Score visualization:
+plot_data1 <- 
+  data1.1 |>
+  mutate(treat = factor(treat, levels = c("B", "H", "G", "Ag", "A", "E", "Cosmopor"))) |>
+  filter(score != "NA") |>
+  group_by(treat, score) |>
+  summarize(count = n()) 
+  
+plot_data1 <-
+  plot_data1 |>
+  filter(!is.na(treat))
+
+p1 <-
+plot_data1 |>
+ggplot(aes(x = treat, y = count, fill = factor(score))) +
+  geom_bar(stat = "identity") +
+  labs(title = "Visual score of the wound",
+       x = "",
+       y = "Count",
+       fill = "score") +
+  theme_bw() +
+  scale_fill_manual(values = c(mypal[3], mypal[7], mypal[5], mypal[1], mypal[8])) + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+
+# CFU_mL visualization:
+plot_data2 <- 
+  data1.1 |>
+  mutate(treat = factor(treat, levels = c("B", "H", "G", "Ag", "A", "E", "Cosmopor"))) |>
+  filter(!is.na(CFU_mL) & CFU_mL != 0) 
+
+plot_data2 <-
+  plot_data2 |>
+  filter(!is.na(treat))
+
+p2 <-
+plot_data2 |>
+ggplot(aes(x = treat, y = CFU_mL)) + 
+  geom_boxplot() + 
+  labs(
+    title = "Microbiological assessment",
+    x = "",
+    y = bquote(CFU%.%mL^-1),
+  ) +
+  scale_y_log10() +
+  theme_bw() + 
+  annotation_logticks(sides = "l", outside = TRUE) +
+  coord_cartesian(clip = "off") + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        axis.text.y = element_text(angle = 0, vjust = 1, hjust=1))
+
+# Plot both graphs
+p1 | p2 
+
+# Total counts in our data
+total_counts <- 
+  data1.1 |>
+  mutate(treat = factor(treat, levels = c("B", "H", "G", "Ag", "A", "E", "Cosmopor"))) |>
+  filter(score != "NA") |>
+  group_by(score) |>
+  summarize(count = n()) 
+
+knitr::kable(total_counts)
+```
+
+<br>
+
+At first glance, we can see the correlation between the `score` and `CFU_mL` (score 0 is related to low CFU values; score 4 is related with high CFU values)
+
+We can also see that score 1 was observed only 4 times. This may affect the reliability of our model estimates (specifically transitions 0 $\to$ 1 and 1 $\to$ 2). Later (see section "Data wrangling"), we aggregate score 1 and score 2 into a single category (see the new score definition above).
+
+<br>
+
+To visualize the relationship between `score` and `CFU_mL`, we create a scatter plot with jitter of our visual scores grouped by log$_{10}$(`CFU_mL`):
+
+```{r}
+#| label: explor2
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+
+plot_data3 <- 
+  data1.1 |>
+  filter(!is.na(score) & score != "NA") |>
+  filter(!is.na(CFU_mL) & CFU_mL != 0) |>
+  mutate(log_CFU_mL = log10(CFU_mL))
+
+ggplot(plot_data3, aes(x = log_CFU_mL, y = score, group = score, color = score)) +
+  geom_jitter(width = 0.2, height = 0.1, alpha = 1) +
+  labs(
+    title = "Visual score vs. log(CFU)",
+    x = bquote(log[10](CFU%.%mL^-1)),
+    y = "Visual Score"
+  ) +
+  theme_bw() + 
+  scale_color_manual(values = c(mypal[3], mypal[7], mypal[5], mypal[1], mypal[8]))
+```
+
+<br>
+
+Visual score 0 is clearly separated and spans a wide range of log$_{10}$(`CFU_mL`). Scores 1, 2, 3, and 4 are overlapping but show a trend.
+
+<br>
+
+We can also visualize the grouped data by treatment:
+```{r}
+#| label: explor3
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+
+plot_data3 <- 
+  data1.1 |>
+  filter(!is.na(score) & score != "NA") |>
+  filter(!is.na(CFU_mL) & CFU_mL != 0) |>
+  mutate(log_CFU_mL = log10(CFU_mL))
+
+ggplot(plot_data3, aes(x = log_CFU_mL, y = score, group = score, color = score)) +
+  geom_jitter(width = 0.2, height = 0.1, alpha = 1) +
+  labs(
+    title = "Visual score vs. log(CFU)",
+    x = bquote(log[10](CFU%.%mL^-1)),
+    y = "Visual Score"
+  ) +
+  theme_bw() + 
+  facet_wrap(~treat) + 
+  scale_color_manual(values = c(mypal[3], mypal[7], mypal[5], mypal[1], mypal[8]))
+```
+
+<br>
+
+## Data wrangling
+
+First, let's aggregate score 1 and 2 into a single category (as discussed above):
+```{r}
+#| label: wrang1
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+
+data1.2 <-
+  data1.1 |>
+  mutate(score2 = case_when(score == "2" ~ "1",
+                            .default = score)) |>
+  mutate(score2 = case_when(score2 == "3" ~ "2",
+                            score2 == "4" ~ "3",
+                            .default = score2)) |>
+  relocate(score2, .after = score) |>
+  mutate(score2 = as.ordered(score2)) |>
+  drop_na(CFU_mL) |>
+  mutate(CFU_mL2 = case_when(CFU_mL == 0 ~ 1005,
+                             .default = CFU_mL)) |>
+  mutate(log_CFU_mL2 = log10(CFU_mL2)) 
+```
+
+<br>
+
+Check for total counts in our data set after aggregation:
+```{r}
+#| label: wrang2
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+#| 
+total_counts <- 
+  data1.2 |>
+  mutate(treat = factor(treat, levels = c("B", "H", "G", "Ag", "A", "E", "Cosmopor"))) |>
+  filter(score2 != "NA") |>
+  group_by(score2) |>
+  summarize(count = n()) 
+
+knitr::kable(total_counts)
+```
+
+<br>
+
+Due to multiplicative nature of bacterial effects rather than additive ones, we will logarithmize the `CFU_mL` variable. However, since some `CFU_mL` values are exactly zero, we will first replace these zeros with a small value (1005 CFU $\cdot$ mL$^{-1}$), which is half of the minimum detectable limit) before applying the logarithm transformation (see section "Data description"). We also standardize the log-transformed variable to have a mean of 0 and a standard deviation of 1 due to better interpretation of the model coefficients:
+```{r}
+#| label: wrang3
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+
+# Logarithmization of the CFU_mL variable
+data1.2 <-
+  data1.2 |>
+  mutate(CFU_mL2 = case_when(CFU_mL == 0 ~ 1005,
+                             .default = CFU_mL)) |>
+  mutate(log_CFU_mL2 = log10(CFU_mL2)) 
+
+# Standardization of the log_CFU_mL2 
+log_CFU_mL2_mean <- mean(data1.2$log_CFU_mL2)
+log_CFU_mL2_sd <- sd(data1.2$log_CFU_mL2)
+
+data1.2 <-
+  data1.2 |>
+  mutate(log_CFU_mL2_s = (log_CFU_mL2 - log_CFU_mL2_mean) / log_CFU_mL2_sd)
+```
+
+<br>
+
+Finally, make sure our data has the correct structure and data type:
+```{r}
+#| label: wrang4
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+
+data1.2 <- 
+  data1.2 |>
+  # remove all NAs from score 
+  filter(score2 != "NA" & !is.na(score2)) |>
+  # IMPORTANT - specify all available levels (otherwise, "NA" can occur as a separate level)
+  mutate(score2 = factor(score2, levels = c("0", "1", "2", "3"))) |>
+  # set the treat variable as a factor
+  mutate(treat = factor(treat, levels = c("B", "H", "Ag", "G", "Cosmopor", "E", "A"))) |>
+  # set the "Cosmopor" as reference level 
+  mutate(treat = relevel(treat, ref = "Cosmopor")) |>
+  mutate(score2 = as.ordered(score2),
+         treat = as.factor(treat),
+         cage = as.factor(cage),
+         batch = as.factor(batch),
+         ID = as.factor(ID),
+         site = as.factor(site),
+         log_CFU_mL2 = as.numeric(log_CFU_mL2),
+         log_CFU_mL2_s = as.numeric(log_CFU_mL2_s))
+
+#save(data1.2, file = "data1.2.RData")
+```
+
+<br>
+
+
+## Formal analysis
+
+### Outcome model (Y)
+
+#### Fit1.1.0
+
+$\eta_{k+1, i} = 0$
+
+Since the ACM uses the probit link, it assumes the underlying latent severity ($\widetilde{Y}_{k+1}$) follows a standard normal distribution, normal(0, 1). $\tau_{k+1}$ represents the point on this latent scale. Then the probability of the wound with lower score over the adjacent higher score is $\Phi(\tau_{k+1})$.
+
+Weakly informative normal(0, 2) on the Intercepts ensures the thresholds are near zero on the latent scales $\widetilde{Y}_{k+1}$. In other words, we expect that, before observing any data, the probability of scoring $k$ is equal to the probability of scoring $k+1$ for every adjacent pair.
+
+```{r}
+#| label: fit1.1.0
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+
+set.seed = 225
+
+bm1.1.0 <- bf(score2 ~ 1)
+
+fit1.1.0  <- brm(bm1.1.0,
+             data = data1.2,
+             family = acat("probit"),
+             warmup = 1000,
+             iter = 4000,
+             chains = 4, 
+             cores = 10,
+             control = list(adapt_delta = 0.99, max_treedepth = 15),
+             #save_all_pars = TRUE,
+             sample_prior = TRUE,
+             prior = c(prior(normal(0, 2), class = Intercept)))
+             
+fit1.1.0 <- add_criterion(fit1.1.0, "loo")
+
+save(fit1.1.0, file = "b_fit1.1.0.RData")
+```
+
+Fit1.1.0:\
+Model summary:
+
+```{r}
+summary(fit1.1.0 )
+```
+
+Note: Estimated coefficients $\color{pink}{\text{Intercept[1]}}$, $\color{pink}{\text{Intercept[2]}}$ etc., correspond to $\tau_{1}$, $\tau_{2}$ etc. (before including any treatment or microbial load effects).
+
+<br>
+
+#### Fit1.2.0
+
+$\eta_{k+1, i}= \sum_{j}^{}(\beta_{TREAT, j, k+1}\cdot TREAT_{i, j})$
+
+Model estimates the effect of each treatment group on the score, relative to the control group (**Cosmopor**).
+
+Importantly, syntax "cs(treat)" accounts for non-proportionality (category-specific effects). For example, a treatment might be very good at preventing the first sign of infection (e.g., $\beta_{TREAT, A, 1} < 0$ ), but less effective at preventing progression to severe disease (e.g., $\beta_{TREAT, A, 4} > 0$). Therefore, regression coefficients for factor `treat` ($\color{pink}{\text{treatA[1]}}$ resp. $\beta_{TREAT, A, 1}$, $\color{pink}{\text{treatA[2]}}$ resp. $\beta_{TREAT, A, 2}$, etc.) are estimated separately for each cut-point.
+
+Weakly informative normal(0, 2) on the treatment coefficients. This allows for reasonably large differences between treatment groups. In other words, we expect no treatment effect before observing any data.
+
+```{r}
+#| label: fit1.2.0
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+set.seed = 225
+
+fit1.2.0 <- update(fit1.1.0,
+                   newdata = data1.2,
+                   formula = bf(score2 ~ 1 + cs(treat)),
+                   prior = c(prior(normal(0, 2), class = Intercept),
+                             prior(normal(0, 2), class = b)))
+
+fit1.2.0 <- add_criterion(fit1.2.0, "loo")
+
+save(fit1.2.0, file = "b_fit1.2.0.RData")
+```
+
+Fit1.2.0:\
+Model summary:\
+Posterior predictive check - bars grouped by treatment:\
+Leave-one-out cross-validation information criterion:
+
+```{r}
+evaluate_bayesian_model(fit1.2.0)
+```
+
+Interpretation of $\beta_{TREAT, j, k+1}$:
+
+E.g. the $\color{pink}{\text{treatA[3]}}$, resp. $\beta_{TREAT, A, 3}$: **A** increases the underlying latent Z-score for the 2 $\to$ 3 transition by 1.84 units, relative to **Cosmopor** ($\beta_{TREAT, A, 3} > 0$). This means that treatment **A** is less effective at preventing progression from score 2 to score 3, compared to **Cosmopor**.
+
+<br>
+
+#### Fit1.3.0
+
+$\eta_{k+1, i}= \sum_{j}^{}(\beta_{TREAT, j, k+1}\cdot TREAT_{i, j}) + \beta_{logcfu}\cdot logcfu_{i}$
+
+Model tests the independent effect of the standardized microbial load (continuous covariate) on the score, in addition to the treatment factor.
+
+Importantly, this model expects proportionality for standardized `log_CFU_mL2_s` covariate. It estimates a single coefficient $\color{pink}{\text{log\_CFU\_mL2\_s}}$ ($\beta_{logCFU}$). This coefficient represents the increase in severity for a 1-unit increase in `log_CFU_mL2_s`, and this effect is assumed to be the same (proportional) across all transitions (0 $\to$ 1, 1 $\to$ 2 etc.).
+
+The prior for ($\beta_{logcfu}$) is centered around zero - no effect prior to observing the data.
+
+```{r}
+#| label: fit1.3.0
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+set.seed = 225
+
+fit1.3.0 <- update(fit1.2.0,
+                   newdata = data1.2,
+                   formula = bf(score2 ~ 1 + cs(treat) + log_CFU_mL2_s),
+                   prior = c(prior(normal(0, 2), class = Intercept),
+                             prior(normal(0, 2), class = b, coef = "treatA"),
+                             prior(normal(0, 2), class = b, coef = "treatAg"),
+                             prior(normal(0, 2), class = b, coef = "treatB"),
+                             prior(normal(0, 2), class = b, coef = "treatE"),
+                             prior(normal(0, 2), class = b, coef = "treatG"),
+                             prior(normal(0, 2), class = b, coef = "treatH"),
+                             prior(normal(0, 2), class = b, coef = "log_CFU_mL2_s")))
+
+fit1.3.0 <- add_criterion(fit1.3.0, "loo")
+
+save(fit1.3.0, file = "b_fit1.3.0.RData")
+```
+
+Fit1.3.0:\
+Model summary:\
+Posterior predictive check - bars grouped by treatment:
+
+```{r, warning=FALSE, message=FALSE, results=TRUE, include=TRUE, echo=TRUE}
+evaluate_bayesian_model(fit1.3.0)
+
+```
+
+Comparison of `fit1.1.0`, `fit1.2.0`, and `fit1.3.0` using LOOIC:
+
+```{r}
+loo(fit1.1.0, fit1.2.0, fit1.3.0)
+```
+
+The coefficient $\color{pink}{\text{log\_CFU\_mL2\_s}}$ is positive (higher bacterial load is associated with a worse outcome).
+
+The LOOIC results indicate that the full model, `fit1.3.0`, is the winner in terms of predictive accuracy. Removing the `log_CFU_mL2_s` predictor (comparing `fit1.3.0` to `fit1.2.0`) results in a substantial drop in predictive performance (elpd_diff = −38.2). Since this difference is nearly 4 times larger than its standard error (se_diff = 8.8).
+
+<br>
+
+#### Fit1.4.0 / Fit1.6.0 / Fit1.7.0 {#sec-fit1.7.0}
+
+This set of (random intercept) models correct for data grouping (nested experimental design).
+
+-   `fit1.4.0` - corrects for the `batch` grouping
+-   `fit1.6.0` - corrects for the `batch` + `cage` grouping
+-   `fit1.7.0` - corrects for the `batch` + `cage` + `ID` grouping
+
+Formal notation for `fit1.7.0`:
+
+$\eta_{k+1, i}= \sum_{j}^{}(\beta_{TREAT, j, k+1}\cdot TREAT_{i, j}) + \beta_{logcfU}\cdot logcfu_{i} + u_{BATCH[m[i]]} + u_{CAGE[m[i], n[i]]} + u_{ID[m[i], n[i], p[i]]}$, where
+
+$\mathrm{u}_{BATCH}^{(m)} \sim N(0, \sigma^{2}_{BATCH})$\
+$\mathrm{u}_{CAGE(BATCH)}^{(m, n)} \sim N(0, \sigma^{2}_{CAGE(BATCH)})$\
+$\mathrm{u}_{ID(CAGE(BATCH))}^{(m, n, p)} \sim N(0, \sigma^{2}_{ID(CAGE(BATCH))})$
+
+```{r}
+#| label: fit467
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+set.seed = 225
+
+fit1.4.0 <- update(fit1.3.0,
+                   newdata = data1.2,
+                   formula = bf(score2 ~ 1 + cs(treat) + log_CFU_mL2_s + (1 | batch)))
+
+fit1.6.0 <- update(fit1.4.0,
+                   newdata = data1.2,
+                   formula = bf(score2 ~ 1 + cs(treat) + log_CFU_mL2_s + (1 | batch / cage)))
+
+
+fit1.7.0 <- update(fit1.6.0,
+                   newdata = data1.2,
+                   formula = bf(score2 ~ 1 + cs(treat) + log_CFU_mL2_s + (1 | batch / cage / ID)))
+
+fit1.4.0 <- add_criterion(fit1.4.0, "loo")
+fit1.6.0 <- add_criterion(fit1.6.0, "loo")
+fit1.7.0 <- add_criterion(fit1.7.0, "loo")
+
+save(fit1.4.0, file = "b_fit1.4.0.RData")
+save(fit1.6.0, file = "b_fit1.6.0.RData")
+save(fit1.7.0, file = "b_fit1.7.0.RData")
+```
+
+<br>
+
+`fit1.4.0`:\
+Model summary:\
+Posterior predictive check - bars grouped by treatment:\
+Leave-one-out cross-validation information criterion:
+
+```{r}
+evaluate_bayesian_model(fit1.4.0)
+```
+
+<br>
+
+`fit1.6.0`:\
+Model summary:\
+Posterior predictive check - bars grouped by treatment:\
+Leave-one-out cross-validation information criterion:
+
+```{r}
+evaluate_bayesian_model(fit1.6.0)
+```
+
+<br>
+
+`fit1.7.0`:\
+Model summary:\
+Posterior predictive check - bars grouped by treatment:\
+Leave-one-out cross-validation information criterion:
+
+```{r}
+evaluate_bayesian_model(fit1.7.0)
+```
+
+<br>
+
+Let's see if the introduction of random effects had an impact on the estimated fixed coefficients:
+
+```{r}
+df1.3.0 <- 
+  as.data.frame(fixef(fit1.3.0)) |>
+  mutate(fit = "fit1.3.0") |>
+  rownames_to_column(var = "RowOrder") 
+
+df1.4.0 <- 
+  as.data.frame(fixef(fit1.4.0)) |>
+  mutate(fit = "fit1.4.0") |>
+  rownames_to_column(var = "RowOrder") 
+
+df1.6.0 <- 
+  as.data.frame(fixef(fit1.6.0)) |>
+  mutate(fit = "fit1.6.0") |>
+  rownames_to_column(var = "RowOrder")  
+  
+df1.7.0 <- 
+  as.data.frame(fixef(fit1.7.0)) |>
+  mutate(fit = "fit1.7.0") |>
+  rownames_to_column(var = "RowOrder")  
+
+# Comparison of modes: fixed effects only vs mixed effects 
+df <- 
+  do.call("rbind", list(df1.3.0, df1.4.0, df1.6.0, df1.7.0)) |>
+  mutate(model_type = case_when(fit == "fit1.3.0" ~ "fixed",
+                                .default = "mixed")) |>
+  ggplot() + 
+  geom_point(aes(x = Estimate, 
+                 y = RowOrder,
+                 group = model_type,
+                 color = model_type), 
+             width=.1,
+             position = position_dodge(width = 0.5)) + 
+  geom_errorbar(aes(x = Estimate, 
+                    xmin = Q2.5, 
+                    xmax = Q97.5, 
+                    y = RowOrder, 
+                    group = model_type, 
+                    color = model_type), 
+                width=.1,
+                position = position_dodge(width = 0.5)) + 
+  geom_vline(xintercept = 0) +
+  labs(title = "Comparison of fixed effects: fit1.3.0 vs [fit1.4.0, fit1.6.0, fit1.7.0]") + 
+  theme_bw() 
+df
+
+# Models with random effects:
+df <- 
+  do.call("rbind", list(df1.4.0, df1.6.0, df1.7.0)) |>
+  ggplot() +
+  geom_point(aes(x = Estimate, 
+                 y = RowOrder,
+                 group = fit,
+                 color = fit), 
+             width=.1,
+             position = position_dodge(width = 0.5)) + 
+  geom_errorbar(aes(x = Estimate, 
+                    xmin = Q2.5, 
+                    xmax = Q97.5, 
+                    y = RowOrder, 
+                    group = fit, 
+                    color = fit), 
+                width=.1,
+                position = position_dodge(width = 0.5)) + 
+  geom_vline(xintercept = 0) +
+  labs(title = "Comparison of fixed effects: fit1.4.0, fit1.6.0, fit1.7.0") + 
+  theme_bw()
+df
+```
+
+The introduction of random effects led to more wider credible intervals. However, the overall patterns and directions of the fixed effects remained consistent across models.
+
+The `fit1.7.0` includes the full nested random effects structure (1 ∣ `batch` / `cage` / `ID`), partitioning the unexplained variability into three distinct components (see Multilevel Hyperparameters). The results indicate that all three sources of grouping (`batch`, `cage` within `batch`, `ID` within `cage`) introduce non-zero variability. Thus, including these full nesting structure in the model seems to be reasonable.
+
+Now we compare the predictive performance of the tested models:
+
+```{r}
+loo(fit1.1.0, fit1.2.0, fit1.3.0, fit1.4.0, fit1.6.0, fit1.7.0)
+```
+
+Since the elpd (Estimated Log Predictive Density) provided by *loo()* relies on statistical approximation (Pareto Smoothing - PSIS), the Pareto k values help us assess the reliability of the elpd calculation for each model. Values approaching or exceeding 0.7 indicate highly influential data points that can make the LOOIC estimation unstable. E.g.,
+
+-   `fit1.4.0`: 5% fell into the "bad" region (0.7, 1) and 1.2 % into "very bad" region (k \> 1)\
+-   `fit1.6.0`: 11.2% "bad", 1.2% "very bad"\
+-   `fit1.7.0`: 21.2% "bad", 2.5% "very bad"
+
+Solution:
+
+-   identify the problematic values and check for any obvious errors or typos in primary data\
+-   compute exact cross-validation for problematic observations using *reloo()*
+
+<br>
+
+#### Check high Pareto k points
+
+**Identification of problematic datapoints**
+
+First, let's find and investigate the data points with high Pareto k for the most interesting fits.\
+Each fit provides a slightly different set of "problematic" values. SO, find them all and plot it:
+
+```{r}
+# Get the LOOIC results
+pareto_1.3.0 <- loo(fit1.3.0)
+pareto_1.4.0 <- loo(fit1.4.0)
+pareto_1.6.0 <- loo(fit1.6.0)
+pareto_1.7.0 <- loo(fit1.7.0)
+
+# Indentify the problematic Pareto k (k > 0.7)
+problem_1.3.0 <-
+  pareto_1.3.0$pointwise |>
+  data.frame() |> 
+  rowid_to_column() |> 
+  filter(influence_pareto_k > 0.7) |> 
+  pull(rowid)
+       
+problem_1.4.0 <-
+  pareto_1.4.0$pointwise |>
+  data.frame() |> 
+  rowid_to_column() |> 
+  filter(influence_pareto_k > 0.7) |> 
+  pull(rowid)
+
+problem_1.6.0 <-
+  pareto_1.6.0$pointwise |>
+  data.frame() |> 
+  rowid_to_column() |> 
+  filter(influence_pareto_k > 0.7) |> 
+  pull(rowid)
+
+problem_1.7.0 <-
+  pareto_1.7.0$pointwise |>
+  data.frame() |> 
+  rowid_to_column() |> 
+  filter(influence_pareto_k > 0.7) |> 
+  pull(rowid)
+
+# Find and save only the unique observations with Pareto k > 0.7
+all_problems <- unique(c(problem_1.3.0, problem_1.4.0, problem_1.6.0, problem_1.7.0))
+
+# Exclude datapoints with Pareto k > 0.7 - we will use it leter to re-run the models
+data1.2_pareto <- 
+  data1.2 |>
+  mutate(rowindex = 1:length(data1.2$ID)) |>
+  mutate(problems = 0) |>
+  filter(!rowindex %in% all_problems)
+
+# Keep only when Pareto k > 0.7
+data1.2_pareto_keep <- 
+  data1.2 |>
+  mutate(rowindex = 1:length(data1.2$ID)) |>
+  mutate(problems = 0) |>
+  filter(rowindex %in% all_problems)
+
+ggplot() +
+  geom_jitter(data = data1.2,
+              mapping = aes(x = log_CFU_mL2, y = score),
+              colour = "black",
+              width = 0.2, 
+              height = 0.1,
+              alpha = 1) +
+    geom_jitter(data = data1.2_pareto_keep,
+              mapping = aes(x = log_CFU_mL2, y = score),
+              colour = "red",
+              width = 0.2, 
+              height = 0.1,
+              alpha = 1) +
+  labs(
+    title = "Pareto k > 0.7: red points - for fit(1.3.0, 1.4.0, 1.6.0, 1.7.0)",
+    x = bquote(log[10](CFU%.%mL^-1)),
+    y = "Visual Score"
+  ) +
+  theme_bw() + 
+  facet_wrap(~treat)
+
+```
+
+Couldn't spot any obvious errors or typos in the original data for the problematic observations (red points). They seem to be valid measurements.
+
+<br>
+
+**Compute exact cross-validation**
+
+Re-run the model(s) for the problematic observations.
+```{r}
+#| label: crossval
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+
+loo1.3.0 <- loo(fit1.3.0)
+reloo1.3.0 <- reloo(fit1.3.0, loo = loo1.3.0, chains = 2)
+
+loo1.4.0 <- loo(fit1.4.0)
+reloo1.4.0 <- reloo(fit1.4.0, loo = loo1.4.0, chains = 2)
+
+loo1.6.0 <- loo(fit1.6.0)
+reloo1.6.0 <- reloo(fit1.6.0, loo = loo1.6.0, chains = 2)
+
+loo1.7.0 <- loo(fit1.7.0)
+reloo1.7.0 <- reloo(fit1.7.0, loo = loo1.7.0, chains = 2)
+
+save(reloo1.3.0, file = "b_reloo1.3.0.RData")
+save(reloo1.4.0, file = "b_reloo1.4.0.RData")
+save(reloo1.6.0, file = "b_reloo1.6.0.RData")
+save(reloo1.7.0, file = "b_reloo1.7.0.RData")
+```
+
+```{r}
+# Final results
+reloo1.3.0
+reloo1.4.0
+reloo1.6.0
+reloo1.7.0
+
+# Compare the models
+loo_compare(x = list(reloo1.3.0, reloo1.4.0, reloo1.6.0, reloo1.7.0))
+```
+
+We can see that all Pareto k estimates (for `fit1.3.0`, `fit1.4.0`, `fit1.6.0`, `fit1.7.0`) are good (k \< 0.7) after computing the exact cross-validation.
+
+`fit1.3.0`, `fit1.4.0`, `fit1.6.0` and`fit1.7.0` are similar in terms of predictive power. We follow the rule of thumb - if the absolute difference in elpd (∣elpd_diff∣) is less than \~ two times the standard error of that difference (\~2× se_diff), the models are considered similar.
+
+<br>
+
+#### Fit1.8.0
+
+Fixed + random effects with interaction (`treat`:`log_CFU_mL2_s`)
+
+Including the interaction between treatment and standardized microbial load.
+
+The interaction `treat`:`log_CFU_mL2_s` allows situations when the quality (virulence) of the bacteria or the host's tolerance to them can be modified by the treatment:
+
+> (i) Treatment can disrupts bacterial quality (e.g., biofilm) making the same CFU count less clinically detrimental (a flatter slope).
+
+> (ii) Treatment offers secondary effects (e.g., anti-inflammation) making the host more tolerant of a given CFU load (a flatter slope).
+
+These are hypotheses. With the following model (`fit1.8.0`), we primarily want to verify whether there will be a dramatic change in the resulting predictions.
+
+```{r}
+#| label: fit1.8.0
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+
+data1.2 <- 
+  data1.2 |>  
+  mutate(treat = relevel(treat, ref = "Cosmopor")) 
+
+fit1.8.0 <- update(fit1.7.0,
+                   newdata = data1.2,
+                   formula = bf(score2 ~ 1 + cs(treat) + log_CFU_mL2_s + treat:log_CFU_mL2_s + (1 | batch / cage / ID)))
+
+save(fit1.8.0, file = "b_fit1.8.0.RData")
+```
+
+`fit1.8.0`:\
+Model summary:\
+Posterior predictive check - bars grouped by treatment:\
+Leave-one-out cross-validation information criterion:
+
+```{r}
+evaluate_bayesian_model(fit1.8.0)
+```
+
+See the comparison of model estimates with and without interaction term.
+
+```{r}
+df1.7.0 <- 
+  as.data.frame(fixef(fit1.7.0)) |>
+  mutate(fit = "fit1.7.0") |>
+  rownames_to_column(var = "RowOrder") 
+
+df1.8.0 <- 
+  as.data.frame(fixef(fit1.8.0)) |>
+  mutate(fit = "fit1.8.0") |>
+  rownames_to_column(var = "RowOrder") 
+
+df <- 
+  do.call("rbind", list(df1.7.0, df1.8.0)) |>
+  ggplot() + 
+  geom_point(aes(x = Estimate, 
+                 y = RowOrder,
+                 group = fit,
+                 color = fit), 
+             width=.1,
+             position = position_dodge(width = 0.5)) + 
+  geom_errorbar(aes(x = Estimate, 
+                    xmin = Q2.5, 
+                    xmax = Q97.5, 
+                    y = RowOrder, 
+                    group = fit, 
+                    color = fit), 
+                width=.1,
+                position = position_dodge(width = 0.5)) + 
+  geom_vline(xintercept = 0) +
+  labs(title = "fit1.7.0 (no interactions) vs fit1.8.0 (with interactions)" )  + 
+  theme_bw() 
+df
+```
+
+We have no strong prior evidence that treatments alter the slope of the CFU-to-score relationship differently. In addition, the interaction coefficients exhibit high posterior uncertainty with widely overlapping zero. The simpler additive structure (e.g., `fit1.7.0`) likely provides more robust estimates given the sample size.
+
+<br>
+
+And compare the predictive power of `fit1.7.0` and `fit1.8.0`:
+
+```{r}
+#| label: crossval_1.8.0
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+
+loo1.8.0 <- loo(fit1.8.0)
+reloo1.8.0 <- reloo(fit1.8.0, loo = loo1.8.0, chains = 2)
+
+save(reloo1.8.0, file = "b_reloo1.8.0.RData")
+
+# Final results
+reloo1.8.0
+```
+
+```{r}
+# Compare the models
+loo_compare(x = list(reloo1.7.0, reloo1.8.0))
+```
+
+<br>
+
+#### Discussion and conclusion
+
+**Overview of tested models**
+
+Fixed effects only:\
+- `fit1.1.0`: score \~ 1\
+- `fit1.2.0`: score \~ 1 + cs(treat)\
+- `fit1.3.0`: score \~ 1 + cs(treat) + log_CFU_mL_s
+
+Fixed + random effects:\
+- `fit1.4.0`: score \~ 1 + cs(treat) + log_CFU_mL_s + (1 \| batch)\
+- `fit1.6.0`: score \~ 1 + cs(treat) + log_CFU_mL_s + (1 \| batch / cage)\
+- `fit1.7.0`: score \~ 1 + cs(treat) + log_CFU_mL_s + (1 \| batch / cage / ID)\
+- `fit1.8.0`: score \~ 1 + cs(treat) + log_CFU_mL_s + treat:log_CFU_mL_s + (1 \| batch / cage / ID)
+
+**Discussion and conclusion**
+
+We found that `log_CFU_mL2_s` represents an important covariate in terms of predictive accuracy, as assessed by the LOOIC (see comparison of `fit1.2.0` and `fit1.3.0`). Incorporation of `batch` as a random effect (fit1.4.0) slightly improved the predictive power compared to `fit1.3.0`.
+
+Further incorporation of `cage` and `ID` did not dramatically improve LOOIC compared to `fit1.4.0` (`fit1.4.0`, `fit1.6.0` and `fit1.7.0` yielded similar values). In contrast, the estimated multilevel hyperparameters for `fit1.7.0` indicate that all three sources of grouping (`batch`, `cage`, `ID`) introduce non-zero variability. Thus, including this full nesting structure in the model seems reasonable.
+
+Since we were not facing any serious computational troubles for all models (MCMC convergence and posterior predictive checks were fine), we chose as the final candidate `fit1.7.0`, which respects the experimental design.
+
+Model `fit1.7.0` remains stable when choosing more diffuse/tighter initial priors (see Sensitivity analysis below) and for the choice of the logit link function (link sensitivity below).
+
+NOte: We chose model `fit1.7.0` over `fit1.8.0` because the interaction terms in the latter did not improve model fit and we prioritized the more parsimonious additive structure.
+
+<br>
+
+##### Sensitivity analysis - prior sensitivity
+
+Check for different prior setting for `fit1.7.0`.
+```{r}
+#| label: sens1
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+
+# ----------------------------------------------------------------------
+# 1. Highly Diffuse Prior (Normal(0, 5)).
+# ----------------------------------------------------------------------
+prior_diffuse <- c(
+    prior(normal(0, 5), class = Intercept),
+    prior(normal(0, 5), class = b, coef = "treat"),
+    prior(normal(0, 5), class = b, coef = "log_CFU_mL2_s")
+)
+
+fit1.7.1 <- update(fit1.7.0, 
+                   prior = prior_diffuse)
+
+save(fit1.7.1, file = "b_fit1.7.1.RData")
+
+
+# ----------------------------------------------------------------------
+# 2. Tighter/Skeptical Prior (Normal(0, 1))
+# ----------------------------------------------------------------------
+prior_tight <- c(
+    prior(normal(0, 1), class = Intercept),
+    prior(normal(0, 1), class = b, coef = "treat"),
+    prior(normal(0, 1), class = b, coef = "log_CFU_mL_s")
+)
+
+fit1.7.2 <- update(fit1.7.0, 
+                   prior = prior_tight)
+
+save(fit1.7.2, file = "b_fit1.7.2.RData")
+```
+
+See the results for the prior sensitivity analysis:
+
+```{r}
+df1.7.0 <- 
+  as.data.frame(fixef(fit1.7.0)) |>
+  mutate(fit = "fit1.7.0") |>
+  rownames_to_column(var = "RowOrder") 
+
+df1.7.1 <- 
+  as.data.frame(fixef(fit1.7.1)) |>
+  mutate(fit = "fit1.7.1") |>
+  rownames_to_column(var = "RowOrder") 
+
+df1.7.2 <- 
+  as.data.frame(fixef(fit1.7.2)) |>
+  mutate(fit = "fit1.7.2") |>
+  rownames_to_column(var = "RowOrder") 
+
+df <- 
+  do.call("rbind", list(df1.7.0, df1.7.1, df1.7.2)) |>
+  ggplot() + 
+  geom_point(aes(x = Estimate, 
+                 y = RowOrder,
+                 group = fit,
+                 color = fit), 
+             width=.1,
+             position = position_dodge(width = 0.5)) + 
+  geom_errorbar(aes(x = Estimate, 
+                    xmin = Q2.5, 
+                    xmax = Q97.5, 
+                    y = RowOrder, 
+                    group = fit, 
+                    color = fit), 
+                width=.1,
+                position = position_dodge(width = 0.5)) + 
+  geom_vline(xintercept = 0) +
+  labs(title = "Initial prior vs Diffuse Prior vs  Tighter prior") + 
+  theme_bw() 
+df
+```
+
+Results seem to be reasonably stable.
+
+<br>
+
+##### Sensitivity analysis - link function
+
+Are the results sensitive to the choice of the link function? - Comparison of probit and logit link functions.
+
+```{r}
+#| label: sens2
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+
+set.seed = 225
+
+fit1.7.3 <- update(fit1.7.0,
+                   newdata = data1.2,
+                   family = acat("logit"))
+
+fit1.7.3 <- add_criterion(fit1.7.3, "loo")
+
+save(fit1.7.3, file = "b_fit1.7.3.RData")
+
+```
+
+See the results for the prior sensitivity analysis:
+
+```{r}
+df1.7.0 <- 
+  as.data.frame(fixef(fit1.7.0)) |>
+  mutate(fit = "fit1.7.0") |>
+  rownames_to_column(var = "RowOrder") 
+
+df1.7.3 <- 
+  as.data.frame(fixef(fit1.7.3)) |>
+  mutate(fit = "fit1.7.3") |>
+  rownames_to_column(var = "RowOrder") 
+
+df <- 
+  do.call("rbind", list(df1.7.0, df1.7.3)) |>
+  ggplot() + 
+  geom_point(aes(x = Estimate, 
+                 y = RowOrder,
+                 group = fit,
+                 color = fit), 
+             width=.1,
+             position = position_dodge(width = 0.5)) + 
+  geom_errorbar(aes(x = Estimate, 
+                    xmin = Q2.5, 
+                    xmax = Q97.5, 
+                    y = RowOrder, 
+                    group = fit, 
+                    color = fit), 
+                width=.1,
+                position = position_dodge(width = 0.5)) + 
+  geom_vline(xintercept = 0) +
+  labs(title = "probit vs logit") + 
+  theme_bw() 
+df
+```
+
+The link function is not a game changer here - results are stable.
+
+<br>
+
+## Mediator model (M) {#sec-fit2.1.0}
+```{r}
+#| label: fit2.1.0
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+set.seed = 225
+
+bm2.1.0 <- bf(log_CFU_mL2_s ~ 1 + treat + (1 | batch / cage / ID))
+
+fit2.1.0  <- brm(bm2.1.0,
+             data = data1.2,
+             family = gaussian(),
+             warmup = 1000,
+             iter = 4000,
+             chains = 4, 
+             cores = 10,
+             control = list(adapt_delta = 0.99, max_treedepth = 15),
+             #save_all_pars = TRUE,
+             sample_prior = TRUE,
+                             prior = c(prior(normal(0, 1), class = Intercept),
+                             prior(normal(0, 1), class = b, coef = "treatA"),
+                             prior(normal(0, 1), class = b, coef = "treatAg"),
+                             prior(normal(0, 1), class = b, coef = "treatB"),
+                             prior(normal(0, 1), class = b, coef = "treatE"),
+                             prior(normal(0, 1), class = b, coef = "treatG"),
+                             prior(normal(0, 1), class = b, coef = "treatH")))
+             
+fit2.1.0 <- add_criterion(fit2.1.0, "loo")
+
+save(fit2.1.0, file = "b_fit2.1.0.RData")
+```
+
+`fit2.1.0`:\
+Model summary:\
+Posterior predictive check:\
+Leave-one-out cross-validation information criterion:
+
+```{r}
+  ###  Summary of a fitted model
+  print(summary(fit2.1.0))
+  
+  ### Distribution of outcome vs. newly simulated data distribution
+  print(pp_check(fit2.1.0, ndraws = 50))
+  
+  ### "Leave-one-out extreme value diagnostic"
+  print(loo(fit2.1.0))
+```
+The observed bacterial load exhibits a bimodality, likely reflecting a biological divergence between "responding" animals (lower CFU) and those with persistent infections (higher CFU). While the Gaussian likelihood is inherently unimodal and produces a smoother, monomodal predictive distribution, the model captures the central tendency and the overall spread of the population data.
+
+## Joint model (Y + M) {#sec-fit_joint}
+```{r}
+#| label: fit_joint
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+# Joint model:
+
+# (A): model for outcome
+# fit1.7.0 <- bf(score2 ~ 1 + cs(treat) + log_CFU_mL2_s + (1 | batch / cage / ID)))
+bf_score <- bf(score2 ~ 1 + cs(treat) + log_CFU_mL2_s + (1 | batch / cage / ID),
+               family = acat("probit"))
+
+# (B) model for mediator
+# fit2.1.0 <- bf(log_CFU_mL2_s ~ 1 + treat + (1 | batch / cage / ID))
+bf_cfu <- bf(log_CFU_mL2_s ~ 1 + treat + (1 | batch / cage / ID),
+             family = gaussian())
+
+priors <- c(
+  prior(normal(0, 1), class = b, resp = "logCFUmL2s"),
+  prior(normal(0, 1), class = b, resp = "score2")
+)
+
+fit_joint <- brm(
+  bf_score + bf_cfu,
+  data = data1.2,
+  warmup = 1000,
+  iter = 4000,
+  chains = 4,
+  cores = 10,
+  control = list(adapt_delta = 0.99, max_treedepth = 15),
+  prior = priors,
+  sample_prior = "yes"
+)
+
+save(fit_joint, file = "fit_joint.RData")
+```
+
+`fit_joint`:\
+Model summary:\
+Posterior predictive check:\
+
+```{r}
+  ###  Summary of a fitted model
+  print(summary(fit_joint))
+```
+
+Interpretation:  
+- B reduces log_CFU by 1.09 SD more than Cosmopor ($\color{pink}{\text{logCFUmL2s\_treatB}}$)   
+- B shifts 0→1 threshold by −0.57 more than Cosmopor ($\color{pink}{\text{score2\_treatB[1]}}$)  
+- each 1-SD increase in CFU → 2.13 increase in wound latent score   ($\color{pink}{\text{score2\_log\_CFU\_mL2\_s}}$)    
+
+<br>
+
+## ADRESSING BIOLOGICAL QUESTIONS
+
+### Antimicrobial vs Tissue effect? {#sec-propmediation}
+
+Proportional mediation via potential outcomes using joint model (@sec-fit_joint):
+
+- Total treatment effect decomposition for **B** vs **A** 
+- **B** vs **A** provides most noticeable treatment effect -> selected for decomposition  
+- Total treatment effect = direct effect (tissue effect; e.g. barrier support) + indirect effect (antimicrobial) - see @sec-DAG
+- **B** is active treatment, **A** is is non-active control  
+
+- Average Conditional Direct Effect: ACDE = E[score | B, CFU=μ_A] − E[score | A, CFU=μ_A]     
+- Average Conditional Indirect Effect: ACIE = E[score | B, CFU=μ_B] − E[score | B, CFU=μ_A]  
+- TOTAL EFFECT = ACDE + ACIE  
+```{r}
+#| label: ch1
+# ==============================================================================
+#  CAUSAL MEDIATION ANALYSIS
+# Framework: Potential Outcomes via brms::posterior_epred()
+# Level: Population-Level Effects (re_formula = NA)
+# ==============================================================================
+
+
+# ==============================================================================
+# --- 1. CONFIGURATION ---
+# ==============================================================================
+base_treat   <- "A"        # Baseline treatment (e.g., PVA without active molecule)
+target_treat <- "B"        # Target treatment (e.g., PVA with active molecule)
+
+# ==============================================================================W
+# --- 2. HELPER FUNCTION: Expected Score from Ordinal Probabilities ---
+# ==============================================================================
+# Conceptul understanding of "Expected Score":
+# Suppose we have a single mouse, draw 1, and 4 categories (0,1,2,3):
+# P(score=0) = 0.75  
+# P(score=1) = 0.20  
+# P(score=2) = 0.04 
+# P(score=3) = 0.01 
+# Expected score = 0*0.75 + 1*0.20 + 2*0.04 + 3*0.01 = 0.31
+# Interpretation: "This mouse's wound is *on average* slightly inflamed."
+
+# Helper: Converts ordinal probabilities (0-3) into a single Expected Score
+# We use the formula: E[Y] = Σ (category_value * probability)
+calc_expected_score <- function(prob_array) {
+  # prob_array dimensions: [Draws, Observations, Categories]
+  # Example: dim = [12000, 80, 4] for 12k draws, 80 mice, 4 categories
+  
+  # For each (draw, obs), compute: E[score] = Σ (category * P(category))
+  # Categories are 0, 1, 2, 3
+  
+  expected_matrix <- 
+    prob_array[,,1] * 0 + 
+    prob_array[,,2] * 1 + 
+    prob_array[,,3] * 2 + 
+    prob_array[,,4] * 3
+  
+  # For each draw, average the expected scores across all observations (mice)
+  # Result: A vector of length [Draws] = posterior distribution of population mean
+  return(rowMeans(expected_matrix))
+}
+
+
+# ==============================================================================
+# --- 3. STEP 1: PREDICT MEDIATOR (M) ---
+# ==============================================================================
+# What would CFU levels be across the entire population if:
+# - Everyone got A? (baseline)
+# - Everyone got B? (target)
+nd_base   <- data1.2 |> mutate(treat = base_treat)
+nd_target <- data1.2 |> mutate(treat = target_treat)
+
+# re_formula = NA ignores specific mouse/cage variation to find the general effect
+m_base_preds   <- posterior_epred(fit_joint, resp = "logCFUmL2s", newdata = nd_base,   re_formula = NA)
+m_target_preds <- posterior_epred(fit_joint, resp = "logCFUmL2s", newdata = nd_target, re_formula = NA)
+
+# Calculate the mean CFU for the population in each scenario
+mu_M_base   <- colMeans(m_base_preds)
+mu_M_target <- colMeans(m_target_preds)
+
+
+# ==============================================================================
+# --- 4. STEP 2: PREDICT OUTCOME (Y) UNDER 3 SCENARIOS ---
+# ==============================================================================
+# We construct counterfactuals: What would the wound score be if:
+# (Treatment, CFU) = (Base, Base), (Target, Base), (Target, Target)
+
+# Scenario 1:
+# Everyone gets A, and CFU is at the population average for A
+# Y(Treatment = Base, Mediator = M_base)
+epred_1 <- posterior_epred(
+  fit_joint, resp = "score2", re_formula = NA,
+  newdata = nd_base |> mutate(log_CFU_mL2_s = mu_M_base)
+)
+Y_base_Mbase <- calc_expected_score(epred_1)
+
+# Scenario 2: 
+# Everyone gets B, but CFU is *still* at A's average
+# Y(Treatment = Target, Mediator = M_base)
+# This isolates B's benefit *not* due to killing bacteria (e.g., anti-inflammatory, barrier support)
+epred_2 <- posterior_epred(
+  fit_joint, resp = "score2", re_formula = NA,
+  newdata = nd_target |> mutate(log_CFU_mL2_s = mu_M_base)
+)
+Y_target_Mbase <- calc_expected_score(epred_2)
+
+# Scenario 3: The Full Potential (Total Effect)
+# Everyone gets B, and CFU changes to B's population average
+# Y(Treatment = Target, Mediator = M_target)
+# This is the total clinical improvement we expect from B
+epred_3 <- posterior_epred(
+  fit_joint, resp = "score2", re_formula = NA,
+  newdata = nd_target |> mutate(log_CFU_mL2_s = mu_M_target)
+)
+Y_target_Mtarget <- calc_expected_score(epred_3)
+
+
+# ==============================================================================
+# --- 5. STEP 3: COMPUTE CAUSAL QUANTITIES ---
+# ==============================================================================
+# Subtract the scenarios to isolate specific pathways
+mediation_results <- data.frame(
+  # ACDE (Average Conditional Direct Effect): Direct path
+  # How much better if we switch from A → B, *holding CFU constant* at A level?
+  Direct_Effect   = Y_target_Mbase - Y_base_Mbase,
+  
+  # ACIE (Average Conditional Indirect Effect): Indirect (antimicrobial) path
+  # How much better if we *allow CFU to change* from A → B, *keeping B treatment*?
+  # This is the "killing bacteria" pathway.
+  Indirect_Effect = Y_target_Mtarget - Y_target_Mbase,
+  
+  # Total Effect: The sum of both paths
+  # Full benefit of B vs. A
+  Total_Effect    = Y_target_Mtarget - Y_base_Mbase
+) |>
+  mutate(
+    Prop_Mediated = Indirect_Effect / Total_Effect
+  )
+
+
+# ==============================================================================
+# --- 6. FINAL SUMMARY TABLE ---
+# ==============================================================================
+final_summary <- mediation_results |>
+  pivot_longer(everything(), names_to = "Parameter", values_to = "Estimate") |>
+  group_by(Parameter) |>
+  median_qi(Estimate, .width = c(0.95)) |>
+  arrange(desc(Parameter))
+
+print("Summary of Population-Level Causal Effects:")
+print(final_summary)
+```
+
+Conclusion for publication:   
+**Treatment B improved overall visual wound appearance compared to the native control A. Bayesian mediation analysis revealed that 63% (95% CrI: 36%, 93%, Average Conditional Indirect Effect) of this improvement was attributable to its antimicrobial activity, with the remaining 37% (Average Conditional Direct Effect) attributable to direct tissue effects — such as moisture regulation, barrier support, or other physical properties of the dressing.** 
+
+<br>
+
+### Does the treatment improve wound healing?  
+
+#### Expectations
+##### Joint model
+- Total treatment effect based on joint model (@sec-fit_joint)  
+- Expected score (treatment T) =  E[score | T, CFU=μ_T]   
+```{r}
+#| label: ch2
+# List of treatments you want to analyze
+treatments <- c("A", "B", "E", "G", "H", "Ag", "Cosmopor")
+
+# allocate results dataframe
+total_eff<- tibble(
+  treat = character(),
+  mean_logCFU = numeric(),
+  estimate = numeric(),
+  lower = numeric(),
+  upper = numeric()
+)
+
+
+for (t in treatments) {
+  # predict logCFU for this treatment
+  nd_t <- data1.2 |> mutate(treat = t)
+  m_preds <- posterior_epred(fit_joint, resp = "logCFUmL2s",
+                            newdata = nd_t,
+                            re_formula = NA)
+  mu_M_t <- colMeans(m_preds)
+
+  # predict score using *this treatment's* mean CFU
+  epred_t <- posterior_epred(fit_joint, resp = "score2",
+                            newdata = nd_t |> mutate(log_CFU_mL2_s = mu_M_t),
+                            re_formula = NA)
+  mean_score_t <- calc_expected_score(epred_t)
+
+  # summarize with median and 95% CrI
+  results_t <- tibble(
+    treat = t,
+    mean_logCFU = median(mu_M_t),
+    estimate = median(mean_score_t),
+    lower = quantile(mean_score_t, 0.025),
+    upper = quantile(mean_score_t, 0.975)
+  )
+
+  # Append to results
+  total_eff <- bind_rows(total_eff, results_t)
+}
+
+
+p2_score_joint <-
+  total_eff |>
+  mutate(treat = factor(treat, levels = c("B", "A", "H", "E", "G", "Ag", "Cosmopor"))) |>
+  ggplot() +
+  geom_point(aes(x = treat, 
+                 y = estimate)) +
+  geom_linerange(aes(x = treat, 
+                    ymin = lower, 
+                    ymax = upper)) +
+  theme_bw() +
+  #ylab("Expected latent wound score") +
+  ylab("Expected score") +
+  xlab("") + 
+  theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+p2_score_joint <- p2_score_joint + ggtitle("joint model - total effects") 
+# save(p2_score_joint, file = "p2_score_joint.RData")
+
+p2_score_joint
+```
+
+##### Single ACAT model
+
+
+- Note: A simpler alternative to get expectations is to use `(score2 ~ 1 + cs(treat) + (1 | batch / cage / ID))` - single ACAT    
+- To verify the robustness of the joint estimation, we compared the total treatment effects against independent single-process model (standalone ACAT)
+```{r}
+#| label: fit1.10.1
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+set.seed = 225
+
+bm1.10.0 <- bf(score2 ~ 1 + cs(treat) + (1 | batch / cage / ID))
+
+fit1.10.0  <- brm(bm1.10.0,
+             data = data1.2,
+             family = acat("probit"),
+             warmup = 1000,
+             iter = 4000,
+             chains = 4, 
+             cores = 10,
+             control = list(adapt_delta = 0.99, max_treedepth = 15),
+             #save_all_pars = TRUE,
+             sample_prior = TRUE,
+                             prior = c(prior(normal(0, 1), class = Intercept),
+                             prior(normal(0, 1), class = b, coef = "treatA"),
+                             prior(normal(0, 1), class = b, coef = "treatAg"),
+                             prior(normal(0, 1), class = b, coef = "treatB"),
+                             prior(normal(0, 1), class = b, coef = "treatE"),
+                             prior(normal(0, 1), class = b, coef = "treatG"),
+                             prior(normal(0, 1), class = b, coef = "treatH")))
+             
+fit1.10.0 <- add_criterion(fit1.10.0, "loo")
+
+save(fit1.10.0, file = "fit1.10.0.RData")
+```
+
+- plot the results (expectations) for the expected score from the simpler model `fit1.10.0` and compare with the joint model (`fit_joint`) results above. 
+```{r}
+#| label: ch3
+# ==============================================================================
+# --- ORIGINAL DATA ---
+# ==============================================================================
+p0_score_simple <-
+data1.2 |>
+  group_by(treat, score2) |>
+  mutate(treat = factor(treat, levels = c("B", "A", "H", "E", "G", "Ag", "Cosmopor"))) |>
+  summarise(count = n()) |>
+  ggplot(mapping = aes(x = treat, y = count, fill = factor(score2))) +
+    geom_bar(stat = "identity") +
+    ylab("Count") +
+    xlab("") + 
+    theme_bw() +
+    scale_fill_manual(values = c(mypal[3], mypal[7], mypal[5], mypal[1], mypal[8])) + 
+    labs(fill = "score2") + 
+    theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        legend.position = "top"
+  )
+  
+# ==============================================================================
+# --- ALL OIGINAL SCORES ---
+# ==============================================================================
+pred <- avg_predictions(fit1.10.0, 
+                       by = c("group", "treat"), 
+                       type = "response",
+                       re_formula = NA,
+                       conf_level = 0.95,
+                       ndraws = 1000) 
+
+p1_score_simple <-
+pred |>
+  mutate(treat = factor(treat, levels = c("B", "A", "H", "E", "G", "Ag", "Cosmopor"))) |>
+  ggplot() + 
+  geom_point(aes(x = treat, 
+                 y = estimate,
+                 group = group,
+                 color = group),
+             position = position_dodge(width = 0.5)) +
+  geom_errorbar(aes(x = treat, 
+                    ymin = conf.low, 
+                    ymax = conf.high,
+                    group = group,
+                    color = group),
+                position = position_dodge(width = 0.5),
+                width = 0.2) +
+  theme_bw() +
+  #ylab("Probability of observing score") +
+  ylab("Probability") +
+  xlab("") + 
+  scale_color_manual(values = c(mypal[3], mypal[7], mypal[5], mypal[1], mypal[8])) + 
+  theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        legend.position = "none")
+
+
+# ==============================================================================
+# --- EXPECTED SCORE ---
+# ==============================================================================
+expected_scores <- 
+  get_draws(pred, shape = "long") |>
+  mutate(score_val = as.numeric(as.character(group))) |> 
+  group_by(drawid, treat) |>
+  summarise(exp_score = sum(draw * score_val), .groups = "drop")
+
+expected_scores_sum <-
+  expected_scores |>   
+  group_by(treat) |>
+  reframe(
+    median = median(exp_score),
+    lower  = quantile(exp_score, 0.025),
+    upper  = quantile(exp_score, 0.975)
+  ) 
+
+p2_score_simple <-
+  expected_scores_sum |>
+  mutate(treat = factor(treat, levels = c("B", "A", "H", "E", "G", "Ag", "Cosmopor"))) |>
+  ggplot() +
+  geom_point(aes(x = treat, 
+                 y = median)) +
+  geom_linerange(aes(x = treat, 
+                    ymin = upper, 
+                    ymax = lower)) +
+  theme_bw() +
+  #ylab("Expected latent wound score") +
+  ylab("Expected score") +
+  xlab("") + 
+  theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+p2_score_simple <- p2_score_simple + ggtitle("total effect model - single ACAT") 
+save(p2_score_simple, file = "p2_score_simple.RData")
+
+p2_score_joint <- p2_score_joint + ggtitle("joint model - total effects") 
+save(p2_score_joint, file = "p2_score_joint.RData")
+
+p2_score_simple | p2_score_joint
+```
+
+#### Contrasts
+##### Joint model
+- Based on joint model (@sec-fit_joint)  
+- Each contrast was calculated separately using the code above (see @sec-propmediation)
+- Specifically, we saved a `final_summary` (@sec-propmediation) for each contrast and then created a dataframe `total_effects` (in the chunk below) for the final graph
+```{r}
+#| label: score_joint_contr
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+# --- comparison of active treatments ---
+B_G <- final_summary 
+save(B_G, file = "B_G.RData")
+
+H_G <- final_summary
+save(H_G, file = "H_G.RData")
+
+B_H <- final_summary
+save(B_H, file = "B_H.RData")
+
+# --- comparison relative to native control ---
+B_A <- final_summary
+save(B_A, file = "B_A.RData")
+
+H_E <- final_summary
+save(H_E, file = "H_E.RData")
+
+G_E <- final_summary
+save(G_E, file = "G_E.RData")
+
+# --- comparison relative to cosmpomor ---
+B_Cosmopor <- final_summary
+save(B_Cosmopor, file = "B_Cosmopor.RData")
+
+H_Cosmopor <- final_summary
+save(H_Cosmopor, file = "H_Cosmopor.RData")
+
+G_Cosmopor <- final_summary
+save(G_Cosmopor, file = "G_Cosmopor.RData")
+
+Ag_Cosmopor <- final_summary
+save(Ag_Cosmopor, file = "Ag_Cosmopor.RData")
+```
+
+```{r}
+#| label: score_joint_contr2
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: true
+#| cache: false
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/B_G.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/H_G.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/B_H.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/B_A.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/H_E.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/G_E.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/B_Cosmopor.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/H_Cosmopor.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/G_Cosmopor.RData")
+load("C:/users/kindermann/Owncloud/4_biomedical_center/R2/1_bc/1_Projects/UOCHB_Rajman/Rmd/21082025_SAureus_Prevent_1az5/Ag_Cosmopor.RData")
+
+comparison <- rep(c("B-G", "H-G", "B-H", "B-A", "H-E", "G-E", "B-Cosmopor", "H-Cosmopor", "G-Cosmopor", "Ag-Cosmopor"), each = 4)
+
+total_effects <- bind_rows(B_G, H_G, B_H, B_A, H_E, G_E, B_Cosmopor, H_Cosmopor, G_Cosmopor, Ag_Cosmopor) |>
+  mutate(comparison = comparison) |>
+  filter(Parameter == "Total_Effect")
+
+p3_score_joint  <- 
+total_effects |>
+  mutate(comparison = factor(comparison, levels = c("B-A", "H-E", "G-E", "Ag-Cosmopor",
+                                          "B-H", "B-G", "H-G", "B-Cosmopor", 
+                                          "H-Cosmopor", "G-Cosmopor"))) |>
+  ggplot() + 
+  geom_point(mapping = aes(x = comparison, y = Estimate)) + 
+  geom_errorbar(mapping = aes(x = comparison, ymin = .lower, ymax = .upper),
+                width = 0) +
+  geom_hline(yintercept = 0, color = "red") +
+  theme_bw() + 
+  ylab("deltaExpected score") +
+  xlab("") + 
+  theme(axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
+        aspect.ratio = 0.8) +
+  ylim(-3, 1) + 
+  ggtitle("joint model - total effects")
+
+p3_score_joint <- p3_score_joint + ggtitle("joint model - total effects") 
+save(p3_score_joint, file = "p3_score_joint.RData")
+
+p3_score_joint
+```
+
+##### Single ACAT model
+```{r}
+#| label: ch4
+# ==============================================================================
+# --- EXPECTED SCORE / CONTRASTS ---
+# ==============================================================================
+
+# contrasts of interest
+comparisons_to_make <- tribble(
+  ~group1, ~group2,
+  "B",     "G",
+  "H",     "G",
+  "B",     "H",
+  "B",     "A",
+  "B",     "Ag",
+  "H",     "E",
+  "G",     "E",
+  "B",     "Cosmopor",
+  "H",     "Cosmopor",
+  "G",     "Cosmopor",
+  "Ag",    "Cosmopor"
+)          
+
+contrasts <- 
+  comparisons_to_make |>
+  # Join group 1 values
+  inner_join(expected_scores, by = c("group1" = "treat"), relationship = "many-to-many") |>
+  rename(val1 = exp_score) |>
+  # Join group 2 values for the SAME drawid
+  inner_join(expected_scores, by = c("group2" = "treat", "drawid"), relationship = "many-to-many") |>
+  rename(val2 = exp_score) |>
+  mutate(diff = val1 - val2,
+         comparison = paste0(group1, "-", group2)) |>
+  group_by(comparison) |>
+  reframe(
+    median = median(diff),
+    lower  = quantile(diff, 0.025),
+    upper  = quantile(diff, 0.975)
+  )  
+  
+p3_score_simple <-
+contrasts |>
+  mutate(comparison = factor(comparison, levels = c("B-A", "H-E", "G-E", "Ag-Cosmopor",
+                                          "B-H", "B-G", "B-Ag", "H-G", "B-Cosmopor", 
+                                          "H-Cosmopor", "G-Cosmopor"))) |>
+  ggplot() + 
+  geom_point(aes(x = comparison, 
+                 y = median)) +
+  geom_linerange(aes(x = comparison, 
+                    ymin = upper, 
+                    ymax = lower)) +
+  geom_hline(yintercept = 0, color = "red") + 
+  theme_bw() +
+  #ylab("Difference in expected latent wound score") +
+  ylab("deltaExpected score") +
+  xlab("") +
+  theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) +
+  ylim(-3, 1)
+```
+
+- plot the results (contrasts) for the expected score from the simpler model `fit1.10.0` and compare with the joint model (`fit_joint`) results above. 
+```{r}
+#| label: ch5
+p3_score_simple <- p3_score_simple + ggtitle("total effect model - single ACAT") 
+save(p3_score_simple, file = "p3_score_simple.RData")
+
+p3_score_joint <- p3_score_joint + ggtitle("joint model - total effects") 
+save(p3_score_joint, file = "p3_score_joint.RData")
+
+p3_score_simple | p3_score_joint
+```
+
+<br>
+
+### Does the treatment reduce bacterial load?
+
+#### Expectations
+##### Joint model
+- Based on joint model (@sec-fit_joint)   
+```{r}
+#| label: ch6
+# List of treatments you want to analyze
+treatments <- c("A", "B", "E", "G", "H", "Ag", "Cosmopor")
+
+# allocate results dataframe
+total_eff<- tibble(
+  treat = character(),
+  estimate = numeric(),
+  lower = numeric(),
+  upper = numeric()
+)
+
+
+for (t in treatments) {
+  # predict logCFU for this treatment
+  nd_t <- data1.2 |> mutate(treat = t)
+  m_preds <- posterior_epred(fit_joint, resp = "logCFUmL2s",
+                            newdata = nd_t,
+                            re_formula = NA)
+  M_t <- m_preds[,1]  
+  
+  # summarize with median and 95% CrI
+  results_t <- tibble(
+    treat = t,
+    estimate = median(M_t),
+    lower = quantile(M_t, 0.025),
+    upper = quantile(M_t, 0.975)
+  )
+
+  # Append to results
+  total_eff <- bind_rows(total_eff, results_t)
+}
+
+
+total_eff <-
+  total_eff |>
+  mutate(treat = factor(treat, levels = c("B", "A", "H", "E", "G", "Ag", "Cosmopor"))) |>
+  #  calculate values on the original logCFU scale
+  mutate(est = (estimate * log_CFU_mL2_sd) + log_CFU_mL2_mean,
+         low = (lower * log_CFU_mL2_sd) + log_CFU_mL2_mean,
+         up = (upper * log_CFU_mL2_sd) + log_CFU_mL2_mean) 
+
+p1_cfu_joint <-
+  total_eff |>
+  ggplot() +
+  geom_point(aes(x = treat, 
+                 y = estimate)) +
+  geom_linerange(aes(x = treat, 
+                    ymin = lower, 
+                    ymax = upper)) +
+  theme_bw() +
+  #ylab("Expected latent wound score") +
+  ylab("log10(CFU·mL-1") +
+  xlab("") + 
+  theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+
+p1_cfu_joint_original <-
+  total_eff |>
+  ggplot() +
+  geom_point(aes(x = treat, 
+                 y = est)) +
+  geom_linerange(aes(x = treat, 
+                    ymin = low, 
+                    ymax = up)) +
+  theme_bw() +
+  #ylab("Expected latent wound score") +
+  ylab("log10(CFU·mL-1") +
+  xlab("") + 
+  theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+
+
+p1_cfu_joint <- p1_cfu_joint + ggtitle("joint model")
+save(p1_cfu_joint, file = "p1_cfu_joint.RData")
+
+p1_cfu_joint_original <- p1_cfu_joint_original + ggtitle("joint model")
+save(p1_cfu_joint_original, file = "p1_cfu_joint_original.RData")
+
+p1_cfu_joint | p1_cfu_joint_original
+```
+
+##### Single Gaussian model
+- Note: A simpler alternative is to use `log_CFU_mL2_s ~ 1 + treat + (1 | batch / cage / ID)` - single Gaussian   
+- To verify the robustness of the joint estimation, we compared the total treatment effects against independent single-process model (standalone Gaussian)
+```{r}
+#| label: ch7
+pred <- avg_predictions(fit2.1.0, 
+                       by = c("treat"), 
+                       type = "response",
+                       re_formula = NA,
+                       conf_level = 0.95,
+                       ndraws = 10000) 
+
+p1_cfu_simple  <-
+pred |>
+  mutate(treat = factor(treat, levels = c("B", "A", "H", "E", "G", "Ag", "Cosmopor"))) |>
+  ggplot() + 
+  geom_point(aes(x = treat, 
+                 y = estimate)) +
+  geom_errorbar(aes(x = treat, 
+                    ymin = conf.low, 
+                    ymax = conf.high),
+                width = 0) +
+theme_bw() +
+ylab("log10(CFU·mL-1)") +
+labs(x = "") +
+theme(aspect.ratio = 0.8,
+      axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+```
+
+- plot the results (expectations) for the `log_CFU_mL2_s` from the simpler model `fit2.1.0` and compare with the joint model (`fit_joint`) results above.
+```{r}
+#| label: ch8
+p1_cfu_simple <- p1_cfu_simple + ggtitle("total effect model - simple Gaussian") 
+save(p1_cfu_simple, file = "p1_cfu_simple.RData")
+
+p1_cfu_joint <- p1_cfu_joint + ggtitle("joint model")
+save(p1_cfu_joint, file = "p1_cfu_joint.RData")
+
+p1_cfu_simple | p1_cfu_joint
+```
+
+#### Contrasts
+##### Joint model
+```{r}
+#| label: ch9
+# List of treatments you want to analyze
+treatments <- c("A", "B", "E", "G", "H", "Ag", "Cosmopor")
+
+# allocate results dataframe
+total_eff<- tibble(
+  estimate = numeric(),
+)
+
+for (t in treatments) {
+  # predict logCFU for this treatment
+  nd_t <- data1.2 |> mutate(treat = t)
+  m_preds <- posterior_epred(fit_joint, resp = "logCFUmL2s",
+                            newdata = nd_t,
+                            re_formula = NA)
+  M_t <- m_preds[,1]  
+  
+  # summarize with median and 95% CrI
+  results_t <- tibble(
+    treat = t,
+    estimate = M_t)
+  
+  # Append to results
+  total_eff <- bind_rows(total_eff, results_t)
+}
+
+
+# column length for each treatment
+length <- 
+  total_eff |>
+  mutate(treat = as.factor(treat)) |>
+  filter(treat == "A") |>
+  summarise(treat = n()) 
+  
+# add id for each value  
+total_eff2 <- 
+  total_eff |>
+  group_by(treat) |>
+  mutate(id = 1:length$treat)
+  
+  # calculate comparisons
+  contrasts_cfu <- 
+    comparisons_to_make |>
+    # Join group 1 values
+    inner_join(total_eff2, by = c("group1" = "treat"), relationship = "many-to-many") |>
+    # Join group 2 values for the SAME drawid
+    inner_join(total_eff2, by = c("group2" = "treat", "id"), relationship = "many-to-many") |>
+    # calculate contrast
+    mutate(diff = estimate.x - estimate.y,
+           comparison = paste0(group1, "-", group2)) |>
+    group_by(comparison) |>
+    reframe(
+      median = median(diff),
+      lower  = quantile(diff, 0.025),
+      upper  = quantile(diff, 0.975)
+    ) |>    
+    # calculate values on the original logCFU scale
+     mutate(change_est = median * log_CFU_mL2_sd,
+             change_low = lower * log_CFU_mL2_sd,
+             change_up = upper * log_CFU_mL2_sd) 
+
+
+# contrasts on standardized scale
+p2_cfu_joint <-
+  contrasts_cfu |>
+  filter(comparison != "B-Ag") |>
+  mutate(comparison = factor(comparison, levels = c("B-A", "H-E", "G-E", "Ag-Cosmopor",
+                                          "B-H", "B-G", "H-G", "B-Cosmopor", 
+                                          "H-Cosmopor", "G-Cosmopor"))) |>
+  ggplot() +
+  geom_point(aes(x = comparison, 
+                 y = median)) +
+  geom_linerange(aes(x = comparison, 
+                    ymin = lower, 
+                    ymax = upper)) +
+  geom_hline(yintercept = 0, color = "red") + 
+  theme_bw() +
+  #ylab("Expected latent wound score") +
+  ylab("deltalog10(CFU·mL-1") +
+  xlab("") + 
+  theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  ggtitle("joint model") 
+
+
+# contrasts on original scale
+p2_cfu_joint_original <-
+  contrasts_cfu |>
+  filter(comparison != "B-Ag") |>
+  mutate(comparison = factor(comparison, levels = c("B-A", "H-E", "G-E", "Ag-Cosmopor",
+                                          "B-H", "B-G", "H-G", "B-Cosmopor", 
+                                          "H-Cosmopor", "G-Cosmopor"))) |>
+  ggplot() +
+  geom_point(aes(x = comparison, 
+                 y = change_est)) +
+  geom_linerange(aes(x = comparison, 
+                    ymin = change_low, 
+                    ymax = change_up)) +
+  geom_hline(yintercept = 0, color = "red") + 
+  theme_bw() +
+  #ylab("Expected latent wound score") +
+  ylab("deltalog10(CFU·mL-1") +
+  xlab("") + 
+  theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1)) + 
+  ggtitle("joint model") 
+```
+
+##### Single Gaussian model
+```{r}
+#| label: ch10
+pred_cfu <- 
+  get_draws(pred, shape = "long") |>
+  group_by(drawid, treat) 
+
+contrasts <- 
+  comparisons_to_make |>
+  inner_join(pred_cfu, by = c("group1" = "treat"), relationship = "many-to-many") |>
+  inner_join(pred_cfu, by = c("group2" = "treat", "drawid"), relationship = "many-to-many") |>
+
+  mutate(diff = draw.x - draw.y,
+         comparison = paste0(group1, "-", group2)) |>
+  group_by(comparison) |>
+  reframe(
+    median = median(diff),
+    lower  = quantile(diff, 0.025),
+    upper  = quantile(diff, 0.975)
+  )  
+  
+  
+p2_cfu_simple  <-
+contrasts |>
+  mutate(comparison = factor(comparison, levels = c("B-A", "H-E", "G-E", "Ag-Cosmopor",
+                                          "B-H", "B-G", "B-Ag", "H-G", "B-Cosmopor", 
+                                          "H-Cosmopor", "G-Cosmopor"))) |>
+  ggplot() + 
+  geom_point(aes(x = comparison, 
+                 y = median)) +
+  geom_linerange(aes(x = comparison, 
+                    ymin = upper, 
+                    ymax = lower)) +
+  geom_hline(yintercept = 0, color = "red") + 
+  theme_bw() +
+  # ylab("Difference in log10(CFU·mL-1)\n(standardized scale)") +
+  ylab("deltalog10(CFU·mL-1)") +
+  xlab("") +
+  theme(aspect.ratio = 0.8,
+        axis.text.x = element_text(angle = 45, vjust = 1, hjust=1))
+```
+
+- plot the results (contrasts) for the `log_CFU_mL2_s` from the simpler model `fit2.1.0` and compare with the joint model (`fit_joint`) results above.
+
+```{r}
+#| label: ch11
+p2_cfu_simple <- p2_cfu_simple + ggtitle("total effect model - single Gaussian") 
+save(p2_cfu_simple, file = "p2_cfu_simple.RData")
+
+p2_cfu_joint <- p2_cfu_joint + ggtitle("joint model") 
+save(p2_cfu_joint, file = "p2_cfu_joint.RData")
+
+p2_cfu_simple | p2_cfu_joint
+```
+
+
+
+## Additional: Direct treatment effect
+### Single ACAT model
+- Is there a direct tissue effect independent of CFU?  
+```{r}
+#| label: direct_effect
+#| warning: false
+#| message: false
+#| include: true
+#| echo: true
+#| eval: false
+#| cache: true
+
+bm1.11.0 <- bf(score2 ~ 1 + cs(treat) + log_CFU_mL2_s + (1 | batch / cage / ID))
+
+fit1.11.0  <- brm(bm1.11.0,
+             data = data1.2,
+             family = acat("probit"),
+             warmup = 1000,
+             iter = 4000,
+             chains = 4, 
+             cores = 10,
+             control = list(adapt_delta = 0.99, max_treedepth = 15),
+             #save_all_pars = TRUE,
+             sample_prior = TRUE,
+                             prior = c(prior(normal(0, 1), class = Intercept),
+                             prior(normal(0, 1), class = b, coef = "treatA"),
+                             prior(normal(0, 1), class = b, coef = "treatAg"),
+                             prior(normal(0, 1), class = b, coef = "treatB"),
+                             prior(normal(0, 1), class = b, coef = "treatE"),
+                             prior(normal(0, 1), class = b, coef = "treatG"),
+                             prior(normal(0, 1), class = b, coef = "treatH"),
+                             prior(normal(0, 1), class = b, coef = "log_CFU_mL2_s")))
+
+fit1.11.0 <- add_criterion(fit1.11.0, "loo")
+
+save(fit1.11.0, file = "b_fit1.11.0.RData")
+```
+
+```{r}
+# ==============================================================================
+# --- EFFECT = CFU ---
+# ==============================================================================
+conditions <- data.frame(treat = c("B", "A", "H", "E", "G", "Ag", "Cosmopor"),
+                         treat2 = c("B", "A", "H", "E", "G", "Ag", "Cosmopor")) 
+conditions <-
+  conditions |>
+  column_to_rownames(var = "treat2")
+
+quantiles <- quantile(data1.2$log_CFU_mL2_s, probs = c(0.05, 0.25, 0.5, 0.75, 0.95))
+
+ce <- conditional_effects(fit1.11.0, effects = "log_CFU_mL2_s",
+                          conditions = conditions,
+                          re_formula = NA,
+                          prob = 0.95,
+                          robust = TRUE,
+                          method = "posterior_epred",
+                          categorical = TRUE)
+
+    plot(ce, plot = FALSE)[[1]] +
+    geom_vline(xintercept = c(quantiles[1], quantiles[2], quantiles[3], quantiles[4], quantiles[5]),
+                              linetype = "dashed", color = "black", alpha = 0.7) +
+    theme_bw() +
+    # scale_fill_manual(values = alpha(c(mypal[3], mypal[4], mypal[9], mypal[8]), 0.2)) +
+    # scale_color_manual(values = alpha(c(mypal[7], mypal[6], mypal[10], mypal[1]), 1)) +
+    theme(aspect.ratio = 0.5) 
+
+
+
+# ==============================================================================
+# --- EFFECT = TREAT ---
+# ==============================================================================
+conditions <- data.frame(log_CFU_mL2_s = c(quantiles[1], quantiles[2], quantiles[3], quantiles[4], quantiles[5]))
+ce <- conditional_effects(fit1.11.0, effects = "treat",
+                          conditions = conditions,
+                          re_formula = NA,
+                          prob = 0.95,
+                          robust = TRUE,
+                          method = "posterior_epred",
+                          categorical = TRUE)
+
+#change order of factor levels in plot
+# Original order: 1Cosmopor | 2B | 3H | 4Ag | 5G | 6E | 7A
+# Desired order: B | A | H | E | G | Ag | Cosmopor
+# Desired order indexed: 2 | 7 | 3 | 6 | 5 | 4 | 1
+ce$`treat:cats__`$effect1__ <-
+  factor(ce$`treat:cats__`$effect1__, levels(ce$`treat:cats__`$effect1__)[c(2, 7, 3, 6, 5, 4, 1)])
+
+plot(ce, plot = FALSE)[[1]] +
+# scale_color_manual(values = c(mypal[3], mypal[7], mypal[5], mypal[8])) +
+theme_bw() +
+theme(aspect.ratio = 0.8) 
+```
+
+# For reproducibility
+```{r}
+sessionInfo()
+```
+
 
 
 

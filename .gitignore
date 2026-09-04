@@ -1,7 +1,16 @@
-.Rproj.user
-.Rhistory
-.RData
-.Ruserdata
+# R data files
+*.RData
+*.rds
+*.rda
 
-/.quarto/
-**/*.quarto_ipynb
+# Quarto cache
+index_cache/
+index_files/
+*_cache/
+*_files/
+
+# Rendered site
+_site/
+
+# Quarto project cache
+.quarto/project-cache/

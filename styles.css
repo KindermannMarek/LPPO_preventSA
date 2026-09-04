@@ -1,16 +1,27 @@
+/* ============================================ */
+/* Global zoom level for comfortable reading    */
+/* ============================================ */
+html {
+  font-size: 80%;
+}
+
+body {
+  font-size: 0.95em;
+}
+
 /* css styles */
+
 /* Code block styling for R code chunks */
 code.sourceCode {
   font-size: 0.85em;
-/* border: 1px solid #ffffff; /* White border */
-  padding: 12px 20px; /* Top/Bottom: 12px, Left/Right: 20px */
-  background-color: #2D2D31; /* Optional: matches your dark theme */
+  padding: 12px 20px;
+  background-color: #2D2D31;
 }
 
 /* Inline code (e.g., `x <- 1`) */
 code {
-  color: #EEE8AA !important; /* Base color */
-  background-color: rgba(0, 0, 0, 0.3); /* Subtle background for visibility */
+  color: #EEE8AA !important;
+  background-color: rgba(0, 0, 0, 0.3);
   padding: 0.1em 0.3em;
   border-radius: 1px;
   font-size: 0.95em;
@@ -32,21 +43,21 @@ body {
 
 /* ✅ The visible frame/container: div.sourceCode */
 div.sourceCode {
-  background-color: #383838;      /* ✅ Match the area you see */
-  border-top: 3px solid #666666;   /* Thick top */
-  border-bottom: 3px solid #666666; /* Thick bottom */
+  background-color: #383838;
+  border-top: 3px solid #666666;
+  border-bottom: 3px solid #666666;
   border-left: 3px solid #3a3a3a;
   border-right: 3px solid #3a3a3a;
   border-radius: 5px;
   margin: 1.2em 0;
-  padding: 0; /* Reset default padding — we'll put it on <pre> instead */
+  padding: 0;
 }
 
 /* ✅ Inner <pre> block: contains actual code + padding */
 pre.sourceCode {
-  background-color: #2D2D31;      /* Darker than div */
-  padding: 12px 20px;             /* Code spacing */
-  margin: 0;                      /* No extra margin */
+  background-color: #2D2D31;
+  padding: 12px 20px;
+  margin: 0;
   font-size: 0.85em;
   overflow-x: auto;
 }
@@ -60,5 +71,20 @@ code.sourceCode {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 1.5em;
   margin-bottom: 0.5em;
-  text-align: left; /* override justify for headers */
+  text-align: left;
+}
+
+/* Navbar styling */
+.navbar {
+  font-size: 0.9em;
+}
+
+/* Tables */
+table {
+  font-size: 0.95em;
+}
+
+/* Lists */
+ul, ol {
+  font-size: 0.95em;
 }

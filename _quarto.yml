@@ -2,13 +2,16 @@ project:
   type: website
 
 website:
-  title: "Statistical report"
+  title: "Statistical Report"
   navbar:
     background: dark
     left:
-      - href: index.qmd  # link for our webpages
-        text: About us
-#      - about.qmd
+      - text: "|"
+      - href: https://www.translationalhistology.com/
+        text: Laboratory of Preclinical Studies
+      - text: "|"
+      - href: https://www.translationalhistology.com/
+        text: Group of Translational Therapeutics and Quantitative Histology
 
 format:
   html:
