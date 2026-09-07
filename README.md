@@ -9,6 +9,11 @@ This page shows an [HTML report](https://kindermannmarek.github.io/LPPO_preventS
 To explore the report, see <https://kindermannmarek.github.io/LPPO_preventSA/>
 
 
+## Repositories
+Original GitHub repository: <https://github.com/KindermannMarek/LPPO_preventSA.git>  
+Archived version (Zenodo DOI): [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19368428.svg)](https://zenodo.org/doi/10.5281/zenodo.19368428) 
+
+
 ## Citation
 
 When utilizing this code for your research, please cite the original publication as follows:
