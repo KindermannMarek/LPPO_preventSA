@@ -70,7 +70,7 @@ project:
 
 **Original publication**
 
-This is data analysis report for the [publication](https://www.sciencedirect.com/science/article/pii/S2772950826003377) *Polycaprolactone and poly(vinyl alcohol) electrospun single-layer nanofiber materials loaded with novel antibacterial LEGO-LPPO for advanced wound dressing*.
+This is data analysis report for the [publication](https://doi.org/10.1016/j.bioadv.2026.215039) *Polycaprolactone and poly(vinyl alcohol) electrospun single-layer nanofiber materials loaded with novel antibacterial LEGO-LPPO for advanced wound dressing*.
 
 <br>
 
@@ -83,7 +83,7 @@ Sahatsapan, Nitjawan, et al. "Polycaprolactone and poly (vinyl alcohol) electros
 <br>
 
 
-Original GitHub repository: <https://kindermannmarek.github.io/LPPO_preventSA/>  
+Original GitHub repository: <https://github.com/KindermannMarek/LPPO_preventSA.git>  
 Archived version (Zenodo DOI): <https://doi.org/10.5281/zenodo.19368428> 
 
 ------------------------------------------------------------------------
@@ -2943,7 +2943,3 @@ theme(aspect.ratio = 0.8)
 sessionInfo()
 ```
 
-
-
-
-# rebuild
